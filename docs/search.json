@@ -2,16 +2,16 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "YOUR PROJECT TITLE",
+    "title": "Opinions Over Time: Visualizing Survey Data from the General Social Survey (1972-2022)",
     "section": "",
-    "text": "1 Introduction"
+    "text": "1 Introduction\nWe choose to explore opinions on affirmative action, abortion, and capital punishment. These are highly debated and significant social issues in the United States, with strong political, cultural, and moral implications. Understanding how people’s views on these issues have evolved over time and how they vary across different demographic groups—such as gender, age, political affiliation, and other factors—can offer valuable insights into societal changes and help explain current political and social divisions. The demographic variables of interest in this analysis include gender, age, geographic location, political affiliation, race, year, education level, income, religious affiliation, and marital status/relationship. By using data from the General Social Survey (GSS), we will investigate how different groups’ opinions have shifted over time and explore any correlations between these views and the demographic factors. This analysis will provide a clearer picture of the broader trends in public opinion and the factors that influence these complex issues."
   },
   {
     "objectID": "data.html#description",
     "href": "data.html#description",
     "title": "2  Data",
     "section": "2.1 Description",
-    "text": "2.1 Description"
+    "text": "2.1 Description\nThe data will be retrieved from the General Social Survey (GSS), a nationally representative survey of US adults run by the National Opinion Research Center at the University of Chicago, with surveys that ran every one to two years dating back to 1972 on a wide range of topics, with at least 1500 respondents in every sample. The data can be downloaded with the use of their API, and contains demographic information on respondents. The major flaw in this data source is that it is almost entirely self-reported survey data. Although this is inevitable when working with survey and social data, it is particularly notable that almost all of the GSS data is the result of self-reported. Furthermore, while at the start the survey ran every year, after 1994, the GSS switched to running on every even-numbered year. This presented significant problems during the COVID pandemic beginning in 2020. Any time series analysis will have to take into account these uneven time points.\n\n2.1.1 Data Sources\n\nhttps://gss.norc.org/us/en/gss/about-the-gss.html - about page"
   },
   {
     "objectID": "data.html#missing-value-analysis",
