@@ -6,11 +6,12 @@ execute:
   echo: true
 
 book:
-  title: "YOUR PROJECT TITLE"
+  title: "Opinions Over Time: Visualizing Survey Data from the General Social Survey (1972-2022)"
   author:
-    - AUTHOR1 (UNI1)
-    - AUTHOR2 (UNI2)
-  repo-url: https://github.com/YOUR_GITHUB_ACCOUNT/REPO_NAME
+    - Jared Donohue (jjd2203)
+    - Morgan Jackson (mcj2158)
+    - Kenza Slaoui (ks4300)
+  repo-url: https://github.com/jdonohue44/GeneralSocialSurveyVisualizations
   date: today
   page-footer:
     right: |
