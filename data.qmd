@@ -8,12 +8,5 @@ The major flaw in this datasource is that it is almost entirely self-reported su
 ### Data Sources
 
  * https://gss.norc.org/us/en/gss/about-the-gss.html - about page
- * https://gssdataexplorer.norc.org/ - general GSS data explorer
- * https://gssdataexplorer.norc.org/variables/548/vshow  - job SAT
- * https://gssdataexplorer.norc.org/variables/1076/vshow - belief in god
- * https://gssdataexplorer.norc.org/variables/449/vshow - confidence in major companies
- * https://gssdataexplorer.norc.org/variables/448/vshow - confidence in banks
- * https://gssdataexplorer.norc.org/variables/434/vshow - general happiness
- * https://gssdataexplorer.norc.org/variables/435/vshow - happiness of marriage
  
 ## Missing value analysis
