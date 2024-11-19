@@ -3,7 +3,7 @@
 ## Description
 
 The data will be retrieved from the General Social Survey (GSS), a nationally representative survey of US adults run by the National Opinion Research Center at the University of Chicago, with surveys that ran every one to two years dating back to 1972 on a wide range of topics, with at least 1500 respondents in every sample. The data can be downloaded with the use of their API, and contains demographic information on respondents.
-The major flaw in this datasource is that it is almost entirely self-reported survey data. Although this is inevitable when working with survey and social data, it is particularly notable that almost all of the GSS data is the result of self-reported. Furthermore, while at the start the survey ran every year, after 1994, the GSS switched to running on every even-numbered year. This presented significant problems during the COVID pandemic beginning in 2020. Any time series analysis will have to take into account these uneven time points.
+The major flaw in this data source is that it is almost entirely self-reported survey data. Although this is inevitable when working with survey and social data, it is particularly notable that almost all of the GSS data is the result of self-reported. Furthermore, while at the start the survey ran every year, after 1994, the GSS switched to running on every even-numbered year. This presented significant problems during the COVID pandemic beginning in 2020. Any time series analysis will have to take into account these uneven time points.
 
 ### Data Sources
 
