@@ -2,17 +2,11 @@
 
 In this project, we explore opinions on affirmative action, abortion, and capital punishment between social groups (e.g. gender, age, race) with the goal of identifying where there are the biggest disparities and how those disparities have changed over the past 50 years. 
 
-## Why
+Specifically, we seek to answer the following questions:
+1. Which groups of people (e.g. gender, age, race) agree the most on abortion, affirmative action, and capital punishment? Which differ the most? What are possible explanations for this?
+2. Have peoples' opinions on these issues changed over the past 50 years? How so?
 
-Understanding how people's views on these issues have evolved over time and how they vary across different demographic groups—such as gender, age, political affiliation, and other factors—can offer valuable insights into societal changes and help explain current political and social divisions. The demographic variables of interest in this analysis include gender, age, geographic location, political affiliation, race, year, education level, income, religious affiliation, and marital status/relationship. By using data from the General Social Survey (GSS), we will investigate how different groups’ opinions have shifted over time and explore any correlations between these views and the demographic factors. This analysis will provide a clearer picture of the broader trends in public opinion and the factors that influence these complex issues.
-
-## Investigative Questions
-
-1. ...
-2. ...
-3. Which groups (e.g. gender, age, race) agree the most on capital punishment? Which differ the most? What are possible explanations for this?
-4. Have peoples' opinions on capital punishment changed over the past 50 years?
-
-## Context
+Understanding how people's views on these issues have evolved over time — and how they vary across different demographic groups such as gender, age, political affiliation, and other factors — can offer valuable insights into societal changes and help explain current political and social divisions. The demographic variables of interest in this analysis include gender, age, geographic location, political affiliation, race, year, education level, income, religious affiliation, and marital status/relationship. By using data from the General Social Survey (GSS), we will investigate how different groups’ opinions have shifted over time and explore any correlations between these views and the demographic factors. This analysis will provide a clearer picture of the broader trends in public opinion and the factors that influence these morally complex issues.
 
 The General Social Survey (GSS) is a nationally representative survey of US adults run by the National Opinion Research Center at the University of Chicago, with surveys that ran every one to two years dating back to 1972 on a wide range of topics, with at least 1,500 respondents in every sample.
+
