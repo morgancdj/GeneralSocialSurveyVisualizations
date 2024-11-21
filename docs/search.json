@@ -4,7 +4,10 @@
     "href": "index.html",
     "title": "Opinions Over Time: Visualizing Survey Data from the General Social Survey (1972-2022)",
     "section": "",
-    "text": "1 Introduction\nWe choose to explore opinions on affirmative action, abortion, and capital punishment. These are highly debated and significant social issues in the United States, with strong political, cultural, and moral implications. Understanding how people’s views on these issues have evolved over time and how they vary across different demographic groups—such as gender, age, political affiliation, and other factors—can offer valuable insights into societal changes and help explain current political and social divisions. The demographic variables of interest in this analysis include gender, age, geographic location, political affiliation, race, year, education level, income, religious affiliation, and marital status/relationship. By using data from the General Social Survey (GSS), we will investigate how different groups’ opinions have shifted over time and explore any correlations between these views and the demographic factors. This analysis will provide a clearer picture of the broader trends in public opinion and the factors that influence these complex issues."
+    "text": "1 Introduction\nIn this project, we explore opinions on affirmative action, abortion, and capital punishment between social groups (e.g. gender, age, race) with the goal of identifying where there are the biggest disparities and how those disparities have changed over the past 50 years.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
   },
   {
     "objectID": "data.html#description",
@@ -18,6 +21,59 @@
     "href": "data.html#missing-value-analysis",
     "title": "2  Data",
     "section": "2.2 Missing value analysis",
-    "text": "2.2 Missing value analysis"
+    "text": "2.2 Missing value analysis\n\n\nCode\nlibrary(gssr)\n\n\nWarning: package 'gssr' was built under R version 4.4.2\n\n\nPackage loaded. To attach the GSS data, type data(gss_all) at the console.\nFor the codebook, type data(gss_dict).\nFor the panel data and documentation, type e.g. data(gss_panel08_long) and data(gss_panel_doc).\nFor help on a specific GSS variable, type ?varname at the console.\n\n\nCode\nlibrary(gssrdoc)\n\n\nWarning: package 'gssrdoc' was built under R version 4.4.2\n\n\nCode\nlibrary(naniar)\nlibrary(dplyr)\n\n\n\nAttaching package: 'dplyr'\n\n\nThe following objects are masked from 'package:stats':\n\n    filter, lag\n\n\nThe following objects are masked from 'package:base':\n\n    intersect, setdiff, setequal, union\n\n\nCode\ndata(gss_all)\ngss_all |&gt;\n  select(abany, discaff, cappun, region, age, childs, sex, relig) |&gt;\n  vis_miss()\n\n\n\n\n\n\n\n\n\nAbove, we can see a quick visualizaiton of the primary variables - both dependent and independent - and which ones are missing. Not all questions were asked in all years of the survey. The main pattern here is that our response variables (abany = “Whether it should be possible for a pregnant woman to obtain a legal abortion if the woman wants it for any reason”; discaff = “What do you think the chances are these days that a white person won’t get a job or promotion while an equally or less qualified black person gets one instead?”; cappun = “Do you favor or oppose the death penalty for persons convicted of murder?”) are much more likely to be missing. This is because not every question was asked every year of the survey, and respondents are more likely to refuse to answer controversial questions than demographic data such as region, age, etc.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#why",
+    "href": "index.html#why",
+    "title": "Opinions Over Time: Visualizing Survey Data from the General Social Survey (1972-2022)",
+    "section": "1.1 Why",
+    "text": "1.1 Why\nUnderstanding how people’s views on these issues have evolved over time and how they vary across different demographic groups—such as gender, age, political affiliation, and other factors—can offer valuable insights into societal changes and help explain current political and social divisions. The demographic variables of interest in this analysis include gender, age, geographic location, political affiliation, race, year, education level, income, religious affiliation, and marital status/relationship. By using data from the General Social Survey (GSS), we will investigate how different groups’ opinions have shifted over time and explore any correlations between these views and the demographic factors. This analysis will provide a clearer picture of the broader trends in public opinion and the factors that influence these complex issues.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#investigative-questions",
+    "href": "index.html#investigative-questions",
+    "title": "Opinions Over Time: Visualizing Survey Data from the General Social Survey (1972-2022)",
+    "section": "1.2 Investigative Questions",
+    "text": "1.2 Investigative Questions\n\n…\n…\nWhich groups (e.g. gender, age, race) agree the most on capital punishment? Which differ the most? What are possible explanations for this?\nHave peoples’ opinions on capital punishment changed over the past 50 years?",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#context",
+    "href": "index.html#context",
+    "title": "Opinions Over Time: Visualizing Survey Data from the General Social Survey (1972-2022)",
+    "section": "1.3 Context",
+    "text": "1.3 Context\nThe General Social Survey (GSS) is a nationally representative survey of US adults run by the National Opinion Research Center at the University of Chicago, with surveys that ran every one to two years dating back to 1972 on a wide range of topics, with at least 1,500 respondents in every sample.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "data.html",
+    "href": "data.html",
+    "title": "2  Data",
+    "section": "",
+    "text": "2.1 Technical Description\nThe data will be retrieved from the General Social Survey (GSS), a nationally representative survey of US adults run by the National Opinion Research Center at the University of Chicago, with surveys that ran every one to two years dating back to 1972 on a wide range of topics, with at least 1,500 respondents in every sample. The data can be downloaded with the use of their API and the packages gssr and gssrdoc, and contains demographic information on respondents. The major flaw in this data source is that it is almost entirely self-reported survey data. Although this is inevitable when working with survey and social data, it is particularly notable that almost all of the GSS data is the result of self-reported. Furthermore, while at the start the survey ran every year, after 1994, the GSS switched to running on every even-numbered year. This presented significant problems during the COVID pandemic beginning in 2020. Any time series analysis will have to take into account these uneven time points.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data</span>"
+    ]
+  },
+  {
+    "objectID": "data.html#technical-description",
+    "href": "data.html#technical-description",
+    "title": "2  Data",
+    "section": "",
+    "text": "2.1.1 Data Sources\n\nhttps://gss.norc.org/us/en/gss/about-the-gss.html - about the GSS\nhttps://gssdataexplorer.norc.org/ - in-browser data explorer for the GSS",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data</span>"
+    ]
   }
 ]
