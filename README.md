@@ -8,6 +8,6 @@ Using data from the General Social Survey (GSS), we investigate how different gr
 https://jdonohue44.github.io/GeneralSocialSurveyVisualizations/
 
 ## How to Make Changes
-1. ...
-2. ...
-3. ...
+1. Update or add file of interest.
+2. Render Book and verify that your change looks good on the rendered web page.
+3. Submit a pull request.
