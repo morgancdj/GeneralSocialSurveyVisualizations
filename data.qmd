@@ -1,14 +1,25 @@
 # Data
 
-## Description
+## Technical Description
 
-The data will be retrieved from the General Social Survey (GSS), a nationally representative survey of US adults run by the National Opinion Research Center at the University of Chicago, with surveys that ran every one to two years dating back to 1972 on a wide range of topics, with at least 1,500 respondents in every sample. The data can be downloaded with the use of their API, and contains demographic information on respondents. The major flaw in this data source is that it is almost entirely self-reported survey data. Although this is inevitable when working with survey and social data, it is particularly notable that almost all of the GSS data is the result of self-reported. Furthermore, while at the start the survey ran every year, after 1994, the GSS switched to running on every even-numbered year. This presented significant problems during the COVID pandemic beginning in 2020. Any time series analysis will have to take into account these uneven time points.
+The data will be retrieved from the General Social Survey (GSS), a nationally representative survey of US adults run by the National Opinion Research Center at the University of Chicago, with surveys that ran every one to two years dating back to 1972 on a wide range of topics, with at least 1,500 respondents in every sample. The data can be downloaded with the use of their API and the packages [gssr and gssrdoc](https://kjhealy.github.io/gssr/), and contains demographic information on respondents. The major flaw in this data source is that it is almost entirely self-reported survey data. Although this is inevitable when working with survey and social data, it is particularly notable that almost all of the GSS data is the result of self-reported. Furthermore, while at the start the survey ran every year, after 1994, the GSS switched to running on every even-numbered year. This presented significant problems during the COVID pandemic beginning in 2020. Any time series analysis will have to take into account these uneven time points.
 
 ### Data Sources
 
  * https://gss.norc.org/us/en/gss/about-the-gss.html - about the GSS
- * https://gssdataexplorer.norc.org/variables/268/vshow - capital punishment 
+ * https://gssdataexplorer.norc.org/ - in-browser data explorer for the GSS
  
 ## Missing value analysis
 
-TODO
+```{r}
+library(gssr)
+library(gssrdoc)
+library(naniar)
+library(dplyr)
+data(gss_all)
+gss_all |>
+  select(abany, discaff, cappun, region, age, childs, sex, relig) |>
+  vis_miss()
+```
+
+Above, we can see a quick visualizaiton of the primary variables - both dependent and independent - and which ones are missing. Not all questions were asked in all years of the survey. The main pattern here is that our response variables (abany = "Whether it should be possible for a pregnant woman to obtain a legal abortion if the woman wants it for any reason"; discaff = "What do you think the chances are these days that a white person won't get a job or promotion while an equally or less qualified black person gets one instead?"; cappun = "Do you favor or oppose the death penalty for persons convicted of murder?") are much more likely to be missing. This is because not every question was asked every year of the survey, and respondents are more likely to refuse to answer controversial questions than demographic data such as region, age, etc.
