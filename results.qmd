@@ -5,3 +5,29 @@
 ## Affirmative Action
 
 ## Capital Punishment
+
+### Which groups of people (e.g. gender, age, race) agree the most on capital punishment? Which differ the most? What are possible explanations for this?
+
+```{r}
+# Install 'gssr' from 'ropensci' universe
+#install.packages('gssr', repos = c('https://kjhealy.r-universe.dev', 'https://cloud.r-project.org'))
+
+# Also recommended: install 'gssrdoc' as well
+#install.packages('gssrdoc', repos = c('https://kjhealy.r-universe.dev', 'https://cloud.r-project.org'))
+
+library(gssr)
+data <- data(gss_all)
+
+# Which years was cappun asked about?
+gss_which_years(gss_all, cappun)
+
+# Panel data
+# data("gss_panel06_long")
+```
+
+
+### Have peoples' opinions on capital punishment changed over the past 50 years? How so?
+
+```{r}
+
+```
