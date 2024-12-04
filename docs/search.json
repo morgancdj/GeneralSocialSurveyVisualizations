@@ -38,5 +38,35 @@
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data</span>"
     ]
+  },
+  {
+    "objectID": "results.html",
+    "href": "results.html",
+    "title": "3  Results",
+    "section": "",
+    "text": "3.1 Abortion",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Results</span>"
+    ]
+  },
+  {
+    "objectID": "results.html#affirmative-action",
+    "href": "results.html#affirmative-action",
+    "title": "3  Results",
+    "section": "3.2 Affirmative Action",
+    "text": "3.2 Affirmative Action",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Results</span>"
+    ]
+  },
+  {
+    "objectID": "results.html#capital-punishment",
+    "href": "results.html#capital-punishment",
+    "title": "3  Results",
+    "section": "3.3 Capital Punishment",
+    "text": "3.3 Capital Punishment\n\n3.3.1 Which groups of people (e.g. gender, age, race) agree the most on capital punishment? Which differ the most? What are possible explanations for this?\n\n\nCode\n# install.packages('gssr', repos = c('https://kjhealy.r-universe.dev', 'https://cloud.r-project.org'))\n# install.packages('gssrdoc', repos = c('https://kjhealy.r-universe.dev', 'https://cloud.r-project.org'))\n\nlibrary(gssr)\nlibrary(dplyr)\nlibrary(ggplot2)\ndata(gss_all)\n\n# Get Cappun Data\n# cappun: Do you favor or oppose the death penalty for persons convicted of murder?\n# 1 favor\n# 2 oppose\n# NA(d) i dont know\ncappun_data &lt;- gss_all |&gt; \n  select(year, cappun) |&gt; \n  filter(cappun==1 | cappun==2)\n\n# Convert to factor with meaningful labels\ncappun_data$cappun &lt;- factor(cappun_data$cappun, \n                             levels = c(\"1\", \"2\"),\n                             labels = c(\"Favor\", \"Oppose\"))\n\n# Plot 1\nggplot(cappun_data, aes(x = year, fill = cappun)) +\n  geom_bar(position = \"stack\") +\n  labs(title = \"Attitudes Towards Death Penalty Over Time\",\n       x = \"Year\",\n       y = \"Count of Responses\",\n       fill = \"Response\") +\n  theme_minimal() +\n  scale_fill_brewer(palette = \"Set2\")\n\n\n\n\n\n\n\n\n\nCode\n# Calculate proportions\ncappun_summary &lt;- cappun_data |&gt;\n  group_by(year, cappun) |&gt;\n  summarise(count = n()) |&gt;\n  group_by(year) |&gt;\n  mutate(proportion = count / sum(count))\n\n# Plot 2\nggplot(cappun_summary, aes(x = year, y = proportion, fill = cappun)) +\n  geom_bar(stat = \"identity\", position = \"stack\") +\n  scale_y_continuous(labels = scales::percent) +\n  labs(title = \"Attitudes Towards Death Penalty Over Time\",\n       x = \"Year\",\n       y = \"Proportion of Responses\",\n       fill = \"Response\") +\n  theme_minimal() +\n  scale_fill_brewer(palette = \"Set2\")\n\n\n\n\n\n\n\n\n\n\n\nCode\nlibrary(forcats)\n# Get Cappun2 Data\n# cappun2: Are you in favor of the death penalty for persons convicted of murder?\n# 1 yes,favor\n# 2 no,dont favor\n# NA(d) don't know\n\n# gss_all |&gt; select(year, cappun2) |&gt; group_by(year, cappun2) |&gt; summarize(n())\n\n# Select the relevant data\ncappun2_data &lt;- gss_all |&gt; \n  select(year, cappun2)\n\n# Convert cappun2 to a factor, which will preserve all categories including \"don't know\"\ncappun2_data &lt;- cappun2_data |&gt;\n  mutate(cappun2_factor = as_factor(cappun2)) |&gt;\n  filter(cappun2_factor != \"iap\" & cappun2_factor != \"no answer\")\n\n# Create a simple bar chart\nggplot(cappun2_data, aes(x = year, fill = cappun2_factor)) +\n  geom_bar(position = \"stack\") +\n  labs(title = \"Attitudes Towards Death Penalty Over Time\",\n       x = \"Year\",\n       y = \"Count of Responses\",\n       fill = \"Response\") +\n  theme_minimal() +\n  scale_fill_brewer(palette = \"Set2\") +\n  theme(axis.text.x = element_text(angle = 45, hjust = 1))  # Rotate x-axis labels for better readability\n\n\n\n\n\n\n\n\n\n\n\n3.3.2 Have peoples’ opinions on capital punishment changed over the past 50 years? How so?",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Results</span>"
+    ]
   }
 ]
