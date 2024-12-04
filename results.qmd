@@ -8,21 +8,90 @@
 
 ### Which groups of people (e.g. gender, age, race) agree the most on capital punishment? Which differ the most? What are possible explanations for this?
 
-```{r}
-# Install 'gssr' from 'ropensci' universe
-#install.packages('gssr', repos = c('https://kjhealy.r-universe.dev', 'https://cloud.r-project.org'))
-
-# Also recommended: install 'gssrdoc' as well
-#install.packages('gssrdoc', repos = c('https://kjhealy.r-universe.dev', 'https://cloud.r-project.org'))
+```{r, message=FALSE, warning=FALSE}
+# install.packages('gssr', repos = c('https://kjhealy.r-universe.dev', 'https://cloud.r-project.org'))
+# install.packages('gssrdoc', repos = c('https://kjhealy.r-universe.dev', 'https://cloud.r-project.org'))
 
 library(gssr)
-data <- data(gss_all)
+library(dplyr)
+library(ggplot2)
+data(gss_all)
 
-# Which years was cappun asked about?
-gss_which_years(gss_all, cappun)
+# Get Cappun Data
+# cappun: Do you favor or oppose the death penalty for persons convicted of murder?
+# 1 favor
+# 2 oppose
+# NA(d) i dont know
+cappun_data <- gss_all |> 
+  select(year, cappun) |> 
+  filter(cappun==1 | cappun==2)
 
-# Panel data
-# data("gss_panel06_long")
+# Convert to factor with meaningful labels
+cappun_data$cappun <- factor(cappun_data$cappun, 
+                             levels = c("1", "2"),
+                             labels = c("Favor", "Oppose"))
+
+# Plot 1
+ggplot(cappun_data, aes(x = year, fill = cappun)) +
+  geom_bar(position = "stack") +
+  labs(title = "Attitudes Towards Death Penalty Over Time",
+       x = "Year",
+       y = "Count of Responses",
+       fill = "Response") +
+  theme_minimal() +
+  scale_fill_brewer(palette = "Set2")
+
+# Calculate proportions
+cappun_summary <- cappun_data |>
+  group_by(year, cappun) |>
+  summarise(count = n()) |>
+  group_by(year) |>
+  mutate(proportion = count / sum(count))
+
+# Plot 2
+ggplot(cappun_summary, aes(x = year, y = proportion, fill = cappun)) +
+  geom_bar(stat = "identity", position = "stack") +
+  scale_y_continuous(labels = scales::percent) +
+  labs(title = "Attitudes Towards Death Penalty Over Time",
+       x = "Year",
+       y = "Proportion of Responses",
+       fill = "Response") +
+  theme_minimal() +
+  scale_fill_brewer(palette = "Set2")
+```
+
+
+```{r, message=FALSE, warning=FALSE}
+library(forcats)
+# Get Cappun2 Data
+# cappun2: Are you in favor of the death penalty for persons convicted of murder?
+# 1 yes,favor
+# 2 no,dont favor
+# NA(d) don't know
+
+# gss_all |> select(year, cappun2) |> group_by(year, cappun2) |> summarize(n())
+
+# Select the relevant data
+cappun2_data <- gss_all |> 
+  select(year, cappun2)
+
+# Convert cappun2 to a factor, which will preserve all categories including "don't know"
+cappun2_data <- cappun2_data |>
+  mutate(cappun2_factor = as_factor(cappun2)) |>
+  filter(cappun2_factor != "iap" & cappun2_factor != "no answer")
+
+# Create a simple bar chart
+ggplot(cappun2_data, aes(x = year, fill = cappun2_factor)) +
+  geom_bar(position = "stack") +
+  labs(title = "Attitudes Towards Death Penalty Over Time",
+       x = "Year",
+       y = "Count of Responses",
+       fill = "Response") +
+  theme_minimal() +
+  scale_fill_brewer(palette = "Set2") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))  # Rotate x-axis labels for better readability
+
+
 ```
 
 
