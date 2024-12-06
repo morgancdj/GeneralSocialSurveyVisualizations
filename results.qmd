@@ -4,6 +4,45 @@
 
 ## Affirmative Action
 
+### Which groups of people agree the most on affirmative action? Which differ the most?
+
+```{r}
+library(gssr)
+library(dplyr)
+
+data(gss_all)
+years <- gss_which_years(gss_all, discaff) |> 
+  filter(discaff == TRUE)
+
+discaff_years <- pull(years, year)
+
+gss_d = filter(gss_all, year %in% discaff_years)
+```
+
+```{r}
+library(dplyr)
+library(ggplot2)
+library(likert)
+library(tidyr)
+library(forcats)
+
+a <- gss_d |>
+  filter(!is.na(as.factor(discaff))) |>
+  ggplot(aes(y = haven::as_factor(region), fill = haven::as_factor(discaff))) + 
+  geom_bar(position = "fill")
+
+a
+```
+```{r}
+# year_averages <- gss_d |>
+#   filter(!is.na(as.factor(discaff))) |>
+#   group_by(year, region) |>
+#   summarize(avg = mean(discaff))
+b <- ggplot(year_averages, aes(x = year, y = avg, color = haven::as_factor(region))) + 
+  geom_point()
+b
+```
+
 ## Capital Punishment
 
 ### Which groups of people (e.g. gender, age, race) agree the most on capital punishment? Which differ the most? What are possible explanations for this?
