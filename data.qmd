@@ -58,7 +58,6 @@ top_50_present <- cp_df_sorted |>
 ggplot(top_50_present, aes(x = column, y = missing_percentage)) +
   geom_bar(stat = "identity", fill = "darkgrey") +
   coord_flip() +
-  scale_y_reverse() +
   labs(
     title = 'Top 50 Most Present Columns',
     x = "Columns",
@@ -74,7 +73,6 @@ ggplot(top_50_present, aes(x = column, y = missing_percentage)) +
 ggplot(cp_df_2_sorted, aes(x = column, y = missing_percentage)) +
   geom_bar(stat = "identity", fill = "darkgrey") +
   coord_flip() +
-  scale_y_reverse() +
   labs(
     title = 'Variables of Interest %Missing',
     x = "Columns",
