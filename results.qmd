@@ -33,13 +33,7 @@ a <- gss_d |>
 
 a
 ```
-<<<<<<< HEAD
-```{r}
- year_averages <- gss_d |>
-   filter(!is.na(as.factor(discaff))) |>
-   group_by(year, region) |>
-   summarize(avg = mean(discaff))
-=======
+
 
 ```{r, message=FALSE, warning=FALSE}
 year_averages <- gss_d |>
@@ -47,7 +41,6 @@ year_averages <- gss_d |>
   group_by(year, region) |>
   summarize(avg = mean(discaff))
 
->>>>>>> f60d1c683367873f421dba9ecaf898596972f8b0
 b <- ggplot(year_averages, aes(x = year, y = avg, color = haven::as_factor(region))) + 
   geom_point()
 b
