@@ -34,10 +34,10 @@ a <- gss_d |>
 a
 ```
 ```{r}
-# year_averages <- gss_d |>
-#   filter(!is.na(as.factor(discaff))) |>
-#   group_by(year, region) |>
-#   summarize(avg = mean(discaff))
+ year_averages <- gss_d |>
+   filter(!is.na(as.factor(discaff))) |>
+   group_by(year, region) |>
+   summarize(avg = mean(discaff))
 b <- ggplot(year_averages, aes(x = year, y = avg, color = haven::as_factor(region))) + 
   geom_point()
 b
