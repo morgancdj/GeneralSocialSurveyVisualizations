@@ -11,7 +11,8 @@ The data will be retrieved from the General Social Survey (GSS), a nationally re
  
 ## Missing value analysis
 
-```{r}
+### Overall
+```{r, message=FALSE, warning=FALSE}
 library(gssr)
 library(gssrdoc)
 library(naniar)
@@ -23,3 +24,64 @@ gss_all |>
 ```
 
 Above, we can see a quick visualizaiton of the primary variables - both dependent and independent - and which ones are missing. Not all questions were asked in all years of the survey. The main pattern here is that our response variables (abany = "Whether it should be possible for a pregnant woman to obtain a legal abortion if the woman wants it for any reason"; discaff = "What do you think the chances are these days that a white person won't get a job or promotion while an equally or less qualified black person gets one instead?"; cappun = "Do you favor or oppose the death penalty for persons convicted of murder?") are much more likely to be missing. This is because not every question was asked every year of the survey, and respondents are more likely to refuse to answer controversial questions than demographic data such as region, age, etc.
+
+### Capital Punishment (cappun) missing row analysis
+```{r, message=FALSE, warning=FALSE}
+library(ggplot2)
+library(dplyr)
+
+cp <- gss_all |> filter(cappun==1 | cappun==2)
+
+cp_df <- data.frame(
+  column = names(colSums(is.na(cp))),
+  missing_count = sort(colSums(is.na(cp))),
+  total_responses = nrow(cp)
+)
+
+# variables of interest
+cp_df_2 <- cp_df |> filter(column %in% c('age', 'race', 'sex', 'region', 'relig', 'degree'))
+
+# percentage of missing data
+cp_df$missing_percentage <- (cp_df$missing_count / cp_df$total_responses) * 100
+cp_df_2$missing_percentage <- (cp_df_2$missing_count / cp_df_2$total_responses) * 100
+
+cp_df_sorted <- cp_df |> arrange(missing_percentage)
+
+cp_df_2_sorted <- cp_df_2 |> 
+  arrange(missing_percentage) |> 
+  mutate(column = factor(column, levels = column))
+
+top_50_present <- cp_df_sorted |> 
+  slice_head(n = 50) |> 
+  mutate(column = factor(column, levels = column))
+
+ggplot(top_50_present, aes(x = column, y = missing_percentage)) +
+  geom_bar(stat = "identity", fill = "darkgrey") +
+  coord_flip() +
+  labs(
+    title = 'Top 50 Most Present Columns',
+    x = "Columns",
+    y = "Percentage of Missing Rows (%)"
+  ) +
+  geom_text(
+    aes(label = sprintf("%.2f%%", missing_percentage)), 
+    position = position_dodge(width = 0.9),
+    hjust = -0.1,
+    size = 2.5
+  )
+
+ggplot(cp_df_2_sorted, aes(x = column, y = missing_percentage)) +
+  geom_bar(stat = "identity", fill = "darkgrey") +
+  coord_flip() +
+  labs(
+    title = 'Variables of Interest %Missing',
+    x = "Columns",
+    y = "Percentage of Missing Rows (%)"
+  ) +
+  geom_text(
+    aes(label = sprintf("%.2f%%", missing_percentage)), 
+    position = position_dodge(width = 0.9),
+    hjust = -0.1,
+    size = 2.5
+  )
+```
