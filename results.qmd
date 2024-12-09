@@ -145,7 +145,7 @@ gss_ab_fct = gss_ab_fct |>
 gss_ab_fct_noNA = gss_ab_fct |> drop_na(c(`mother's health`,`birth defect`,`rape`,`financial hardship`,`married-no more children`,`not married`)) |> filter(!(year %in% c(1977:2022) & is.na(`any reason`)))
 ```
 
-Before we start data analysis, we first load the data and the variables we are interested in. We select specific abortion-related variables as well as demographic variables. We choose seven abortion variables each representing a different reason a woman could be seeking an abortion and respondents' opinion (Yes, No, NA) on whether a woman should be able to obtain a legal abortion for such a reason. The demographic variables selected are the following:
+Before we start data analysis, we first load the data and the variables we are interested in. The data can be easily accessed through the `gssr` package We select specific abortion-related variables as well as demographic variables. We choose seven abortion variables each representing a different reason a woman could be seeking an abortion and respondents' opinion (Yes, No, NA) on whether a woman should be able to obtain a legal abortion for such a reason. The demographic variables selected are the following:
 
 - sex
 

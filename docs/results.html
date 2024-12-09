@@ -364,7 +364,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-138"><a href="#cb1-138" aria-hidden="true" tabindex="-1"></a>gss_ab_fct_noNA <span class="ot">=</span> gss_ab_fct <span class="sc">|&gt;</span> <span class="fu">drop_na</span>(<span class="fu">c</span>(<span class="st">`</span><span class="at">mother's health</span><span class="st">`</span>,<span class="st">`</span><span class="at">birth defect</span><span class="st">`</span>,<span class="st">`</span><span class="at">rape</span><span class="st">`</span>,<span class="st">`</span><span class="at">financial hardship</span><span class="st">`</span>,<span class="st">`</span><span class="at">married-no more children</span><span class="st">`</span>,<span class="st">`</span><span class="at">not married</span><span class="st">`</span>)) <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="sc">!</span>(year <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1977</span><span class="sc">:</span><span class="dv">2022</span>) <span class="sc">&amp;</span> <span class="fu">is.na</span>(<span class="st">`</span><span class="at">any reason</span><span class="st">`</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>Before we start data analysis, we first load the data and the variables we are interested in. We select specific abortion-related variables as well as demographic variables. We choose seven abortion variables each representing a different reason a woman could be seeking an abortion and respondents’ opinion (Yes, No, NA) on whether a woman should be able to obtain a legal abortion for such a reason. The demographic variables selected are the following: - sex - age - race - degree: highest degree achieved - marital: marital status - childs: total number of children - relig16: religion raised in - relig: current religious preference - partyid: political party affiliation - polviews: political/social views (think of self as liberal or conservative) - reg16: Region of residence at age 16 - reg: region of interview</p>
+<p>Before we start data analysis, we first load the data and the variables we are interested in. We select specific abortion-related variables as well as demographic variables. We choose seven abortion variables each representing a different reason a woman could be seeking an abortion and respondents’ opinion (Yes, No, NA) on whether a woman should be able to obtain a legal abortion for such a reason. The demographic variables selected are the following:</p>
+<ul>
+<li><p>sex</p></li>
+<li><p>age</p></li>
+<li><p>race</p></li>
+<li><p>degree: highest degree achieved</p></li>
+<li><p>marital: marital status</p></li>
+<li><p>childs: total number of children</p></li>
+<li><p>relig16: religion raised in</p></li>
+<li><p>relig: current religious preference</p></li>
+<li><p>partyid: political party affiliation</p></li>
+<li><p>polviews: political/social views (think of self as liberal or conservative)</p></li>
+<li><p>reg16: Region of residence at age 16</p></li>
+<li><p>reg: region of interview</p></li>
+</ul>
 <p>We clean and transform the data by mutating categorical variables into factors with meaningful labels. We also remove the rows with NA values in the abortion-related columns. This is because we discovered through data exploration that the NA values pertaining to these variables represent inapplicable responses. Therefore, we remove these rows to ensure that we only use relevant and complete data for further analysis.</p>
 </section>
 <section id="does-the-public-opinion-on-abortion-vary-based-on-the-reason-a-woman-is-seeking-abortion" class="level3" data-number="3.1.2">
@@ -390,15 +404,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>We first seek to investigate whether the general public opinion on abortion varies based on the reason a woman seeks abortion. We include data from the entire period of 50 years (1977-2022). Note that the seven variables we choose represent the following reasons:</p>
 <ul>
-<li><p><code>mother's health</code>: If the woman’s own health is seriously endangered by the pregnancy? (abhlth)</p></li>
-<li><p><code>rape</code>: If she became pregnant as a result of rape? (abrape)</p></li>
-<li><p><code>birth defect</code>: If there is a strong chance of serious defect in the baby? (abdefect)</p></li>
-<li><p><code>financial hardship</code>: If the family has a very low income and cannot afford any more children? (abpoor)</p></li>
-<li><p><code>married-no more children</code>: If she is married and does not want any more children? (abnomore)</p></li>
-<li><p><code>not married</code>: If she is not married and does not want to marry the man? (absingle)</p></li>
-<li><p><code>any reason</code>: If the woman wants it for any reason? (abany)</p></li>
+<li><p><code>mother's health</code>: If the woman’s own health is seriously endangered by the pregnancy?</p></li>
+<li><p><code>rape</code>: If she became pregnant as a result of rape?</p></li>
+<li><p><code>birth defect</code>: If there is a strong chance of serious defect in the baby?</p></li>
+<li><p><code>financial hardship</code>: If the family has a very low income and cannot afford any more children?</p></li>
+<li><p><code>married-no more children</code>: If she is married and does not want any more children?</p></li>
+<li><p><code>not married</code>: If she is not married and does not want to marry the man?</p></li>
+<li><p><code>any reason</code>: If the woman wants it for any reason?</p></li>
 </ul>
-<p>These variables are originally labeled <em>abhlth</em>, <em>abrape</em>, <em>abdefect</em>, <em>abpoor</em>, <em>abnomore</em>, <em>absingle</em>, <em>abany</em> respectively. All these variables were included in the GSS survey from 1972 to 2022, except for the “abany” (abortion for any reason) variable which was only included starting in 1977.</p>
+<p>These variables are originally labeled <em>abhlth</em>, <em>abrape</em>, <em>abdefect</em>, <em>abpoor</em>, <em>abnomore</em>, <em>absingle</em>, and <em>abany</em> respectively. All these variables were included in the GSS survey from 1972 to 2022, except for the “abany” (abortion for any reason) variable which was only included starting in 1977.</p>
 <p>The category receiving the most support for abortion is when the mother’s health is at risk, as 89.3% of respondents are in favor of abortion in this case. Abortion in cases of rape or a potential serious defect in the baby also receives strong supoort at 81.54% and 80.02% respectively. Support for the remaining reasons is much lower. Only 50% of respondents vote in favor of abortion when the reason is financial hardship. Other reasons, such as when the mother is married but does not want more children, is unmarried and does not want to marry the father, or when abortion is sought for any reason, receive even less support. The graph reveals that the percentage of support is nearly identical for these reasons. This is an expected result, as these reasons are often viewed as less “detrimental” compared to situations where the health of the mother or baby is compromised. Seeking abortion for any reason is the category that receives the least amount of support of all the reasons the survey explores with only 45.12% of support.</p>
 </section>
 <section id="does-the-public-opinion-on-abortion-vary-across-time-how-does-it-vary-for-each-of-the-reasons-for-seeking-abortion" class="level3" data-number="3.1.3">
