@@ -146,17 +146,29 @@ gss_ab_fct_noNA = gss_ab_fct |> drop_na(c(`mother's health`,`birth defect`,`rape
 ```
 
 Before we start data analysis, we first load the data and the variables we are interested in. We select specific abortion-related variables as well as demographic variables. We choose seven abortion variables each representing a different reason a woman could be seeking an abortion and respondents' opinion (Yes, No, NA) on whether a woman should be able to obtain a legal abortion for such a reason. The demographic variables selected are the following:
+
 - sex
+
 - age 
+
 - race 
+
 - degree: highest degree achieved
+
 - marital: marital status
+
 - childs: total number of children 
+
 - relig16: religion raised in 
+
 - relig: current religious preference
+
 - partyid: political party affiliation 
+
 - polviews: political/social views (think of self as liberal or conservative)
+
 - reg16: Region of residence at age 16
+
 - reg: region of interview
 
 We clean and transform the data by mutating categorical variables into factors with meaningful labels. We also remove the rows with NA values in the abortion-related columns. This is because we discovered through data exploration that the NA values pertaining to these variables represent inapplicable responses. Therefore, we remove these rows to ensure that we only use relevant and complete data for further analysis.
@@ -180,21 +192,21 @@ ggplot(gss_abortion_reason_long_noNA |> filter(!is.na(response)), aes(x=abortion
 
 We first seek to investigate whether the general public opinion on abortion varies based on the reason a woman seeks abortion. We include data from the entire period of 50 years (1977-2022). Note that the seven variables we choose represent the following reasons:
 
-- `mother's health`: If the woman's own health is seriously endangered by the pregnancy? (abhlth)
+- `mother's health`: If the woman's own health is seriously endangered by the pregnancy? 
 
-- `rape`: If she became pregnant as a result of rape? (abrape)
+- `rape`: If she became pregnant as a result of rape? 
 
-- `birth defect`: If there is a strong chance of serious defect in the baby? (abdefect)
+- `birth defect`: If there is a strong chance of serious defect in the baby? 
 
-- `financial hardship`: If the family has a very low income and cannot afford any more children? (abpoor)
+- `financial hardship`: If the family has a very low income and cannot afford any more children? 
 
-- `married-no more children`: If she is married and does not want any more children? (abnomore)
+- `married-no more children`: If she is married and does not want any more children? 
 
-- `not married`: If she is not married and does not want to marry the man? (absingle)
+- `not married`: If she is not married and does not want to marry the man? 
 
-- `any reason`: If the woman wants it for any reason? (abany)
+- `any reason`: If the woman wants it for any reason? 
 
-These variables are originally labeled *abhlth*, *abrape*, *abdefect*, *abpoor*, *abnomore*, *absingle*, *abany*
+These variables are originally labeled *abhlth*, *abrape*, *abdefect*, *abpoor*, *abnomore*, *absingle*, and *abany*
 respectively. All these variables were included in the GSS survey from 1972 to 2022, except for the "abany" (abortion for any reason) variable which was only included starting in 1977. 
 
 The category receiving the most support for abortion is when the mother's health is at risk, as 89.3% of respondents are in favor of abortion in this case. Abortion in cases of rape or a potential serious defect in the baby also receives strong supoort at 81.54% and 80.02% respectively. Support for the remaining reasons is much lower. Only 50% of respondents vote in favor of abortion when the reason is financial hardship. Other reasons, such as when the mother is married but does not want more children, is unmarried and does not want to marry the father, or when abortion is sought for any reason, receive even less support.
