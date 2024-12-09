@@ -177,6 +177,7 @@ ggplot(gss_abortion_reason_long_noNA |> filter(!is.na(response)), aes(x=abortion
   geom_bar(position="fill") + 
   labs(title = "Public Opinions on Whether a Pregnant Woman Should Be Allowed to Obtain a Legal Abortion \n Categorized by Reason", y = "Percentage of Respondents", x = "Reason for Abortion", fill = "Response") + theme_bw() + theme(plot.title = element_text(hjust=0.5))
 ```
+
 We first seek to investigate whether the general public opinion on abortion varies based on the reason a woman seeks abortion. We include data from the entire period of 50 years (1977-2022). Note that the seven variables we choose represent the following reasons:
 
 - `mother's health`: If the woman's own health is seriously endangered by the pregnancy? (abhlth)
@@ -200,7 +201,6 @@ The category receiving the most support for abortion is when the mother's health
 The graph reveals that the percentage of support is nearly identical for these reasons. This is an expected result, as these reasons are often viewed as less "detrimental" compared to situations where the health of the mother or baby is compromised. Seeking abortion for any reason is the category that receives the least amount of support of all the reasons the survey explores with only 45.12% of support.
 
 
-
 ### Does the public opinion on abortion vary across time? How does it vary for each of the reasons for seeking abortion?  
 
 ```{r, message=FALSE, warning=FALSE, fig.width = 10, fig.height = 8}
@@ -221,6 +221,7 @@ Since public opinion on abortion in the United States varies depending on the re
 As seen in the previous graph, the trend holds true, with overwhelming support for abortion when the mother's health is at risk, followed by strong support for abortion in cases of rape and serious birth defects. The remaining reasons receive much lower levels of support, in the following order: financial hardship, the mother is married and does not want more children, the mother is single and does not want to marry the father, and finally, the lowest support is for abortion for any reason.
 
 Additionally, we observe that support for abortion for any reason is consistently lower than support for other reasons until 1995, when it occasionally surpasses support for other categories in certain years.
+
 
 ###
 
