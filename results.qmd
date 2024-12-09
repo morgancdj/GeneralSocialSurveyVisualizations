@@ -2,6 +2,170 @@
 
 ## Abortion
 
+### Data Cleaning
+
+```{r, message=FALSE, warning=FALSE}
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(gssr)
+
+# Loading the data
+data(gss_all)
+
+# Selecting abortion and demographic variables
+gss_ab = gss_all |>
+  select(c(year, abdefect, abnomore, abhlth, abpoor, abrape, absingle, abany, sex, age, race, degree, relig, relig16, marital, partyid, polviews, childs, region, reg16))
+
+# Data Cleaning: Mutating variables, defining categorical variables and transforming them into factors
+gss_ab_fct = gss_ab |> 
+                mutate(sex = case_when(sex == 1 ~ "male",
+                                       sex == 2 ~ "female"),
+                       race = case_when(race == 1 ~ "white",
+                                        race == 2 ~ "black",
+                                        race == 3 ~ "other"),
+                       degree = case_when(degree == 0 ~ "less than high school",
+                                          degree == 1 ~ "high school",
+                                          degree == 2 ~ "associate/junior college",
+                                          degree == 3 ~ "bachelor's",
+                                          degree == 4 ~ "graduate"),
+                       relig = case_when(relig %in% c(1, 2, 10, 11, 13) ~ "christian",
+                                      	 relig == 3	~ "jewish",			
+                                         relig == 4	~ "none",			
+                                         relig %in% c(5,8)	~ "other",			
+                                         relig == 6	~ "buddhism",			
+                                         relig == 7	~ "hinduism",
+                                         relig == 9 ~	"muslim/islam",
+                                         relig == 12 ~ "native american"),
+                       relig16 = case_when(relig16 %in% c(1, 2, 10, 11, 13) ~ "christian",
+                                        	 relig16 == 3	~ "jewish",			
+                                           relig16 == 4	~ "none",			
+                                           relig16 %in% c(5,8)	~ "other",			
+                                           relig16 == 6	~ "buddhism",			
+                                           relig16 == 7	~ "hinduism",
+                                           relig16 == 9 ~	"muslim/islam",
+                                           relig16 == 12 ~ "native american"), 
+                       partyid = case_when(partyid == 0	~ "strong democrat",			
+                                           partyid == 1	~ "not very strong democrat",			
+                                           partyid == 2	~ "independent, close to democrat",			
+                                           partyid == 3	~ "independent (neither, no response)",			
+                                           partyid == 4	~ "independent, close to republican",			
+                                           partyid == 5	~ "not very strong republican",		
+                                           partyid == 6	~ "strong republican",			
+                                           partyid == 7	~ "other party"),
+                       polviews = case_when(polviews == 1	~ "extremely liberal",			
+                                            polviews == 2	~ "liberal",			
+                                            polviews == 3	~ "slightly liberal",			
+                                            polviews == 4	~ "moderate, middle of the road",		
+                                            polviews == 5	~ "slightly conservative",		
+                                            polviews == 6	~ "conservative",			
+                                            polviews == 7	~ "extremely conservative"),
+                       marital = case_when(marital == 1	~ "married",			
+                                           marital == 2	~ "widowed",			
+                                           marital == 3	~ "divorced",			
+                                           marital == 4	~ "separated",			
+                                           marital == 5	~ "never married"),
+                       childs = case_when(childs == 0 ~ "0",
+                                          childs == 1 ~ "1",
+                                          childs == 2 ~ "2",
+                                          childs == 3 ~ "3",
+                                          childs == 4 ~ "4",
+                                          childs == 5 ~ "5",
+                                          childs == 6 ~ "6",
+                                          childs == 7 ~ "7",
+                                          childs == 8 ~ "8 or more"),
+                       region = case_when(region == 1	~ "new england",			
+                                          region == 2	~ "middle atlantic",			
+                                          region == 3	~ "east north central",			
+                                          region == 4	~ "west north central",			
+                                          region == 5	~ "south atlantic",			
+                                          region == 6	~ "east south atlantic",			
+                                          region == 7	~ "west south central",			
+                                          region == 8	~ "mountain",			
+                                          region == 9	~ "pacific"),
+                       reg16 = case_when(reg16 == 0	~ "foreign",
+                                         reg16 == 1	~ "new england",			
+                                         reg16 == 2	~ "middle atlantic",			
+                                         reg16 == 3	~ "east north central",			
+                                         reg16 == 4	~ "west north central",			
+                                         reg16 == 5	~ "south atlantic",			
+                                         reg16 == 6	~ "east south atlantic",			
+                                         reg16 == 7	~ "west south central",			
+                                         reg16 == 8	~ "mountain",			
+                                         reg16 == 9	~ "pacific")) |>
+                mutate(sex = as.factor(sex),
+                       race = as.factor(race),
+                       degree = factor(degree, 
+                                       levels = c("less than high school","high school","associate/junior college","bachelor's","graduate")),
+                       relig = as.factor(relig),
+                       relig16 = as.factor(relig16),
+                       partyid = factor(partyid, 
+                                       levels = c("strong democrat","not very strong democrat",	"independent, close to democrat",	"independent (neither, no response)",	"independent, close to republican", "not very strong republican", "strong republican",	"other party")),
+                       polviews = factor(polviews, 
+                                       levels = c("extremely liberal","liberal", "slightly liberal","moderate, middle of the road",	"slightly conservative","conservative",	"extremely conservative")),
+                       marital = as.factor(marital),
+                       childs = factor(childs, 
+                                       levels = c("0","1","2","3","4","5","6","7","8 or more")),
+                       region = as.factor(region),
+                       reg16 = as.factor(reg16))  |> 
+              mutate(abdefect = case_when(abdefect == 1 ~ "yes",
+                                          abdefect == 2 ~ "no"),
+                     abnomore = case_when(abnomore == 1 ~ "yes",
+                                          abnomore == 2 ~ "no"),
+                     abpoor = case_when(abpoor == 1 ~ "yes",
+                                        abpoor == 2 ~ "no"),
+                     abhlth = case_when(abhlth == 1 ~ "yes",
+                                        abhlth == 2 ~ "no"),
+                     abrape = case_when(abrape == 1 ~ "yes",
+                                        abrape == 2 ~ "no"),
+                     absingle = case_when(absingle == 1 ~ "yes",
+                                          absingle == 2 ~ "no"),
+                     abany = case_when(abany == 1 ~ "yes",
+                                       abany == 2 ~ "no")) |>
+              mutate(abdefect = as.factor(abdefect), 
+                     abnomore = as.factor(abnomore),
+                     abhlth = as.factor(abhlth),
+                     abpoor = as.factor(abpoor), 
+                     abrape = as.factor(abrape),
+                     absingle = as.factor(absingle),
+                     abany = as.factor(abany))
+
+# Removing rows containing NAs in the abortion variables - These NAs refer to "inapplicable" responses
+gss_ab_fct_noNA = gss_ab_fct |> drop_na(c(abdefect, abhlth,abrape, abpoor,abnomore,absingle)) |> filter(!(year %in% c(1977:2022) & is.na(abany)))
+```
+
+
+### Do people's opinion vary based on the reason a woman is seeking abortion ?
+
+```{r}
+# Transforming the data into long format
+gss_abortion_reason_long_noNA = gss_ab_fct_noNA |>
+      pivot_longer(cols = c(abdefect, abhlth,abrape, abpoor,abnomore,absingle, abany), 
+                   names_to = "abortion_reason",values_to = "response") |>
+      select(c(year, abortion_reason, response)) |>
+      mutate(abortion_reason = factor(abortion_reason, levels= c( "abhlth","abrape", "abdefect", "abpoor","abnomore","absingle", "abany")))
+
+# Stacked bar chart (refined version of a mosaic plot) to show the responses of respondents on whether a woman should be able to legally obtain an abortion based on the reason for seeking abortion
+ggplot(gss_abortion_reason_long_noNA |> filter(!is.na(response)), aes(x=abortion_reason, fill= response))+
+  geom_bar(position="fill") + 
+  labs(title = "Public Opinions on Whether a Pregnant Woman Should Be Allowed \n to Legally Obtain an Abortion, Categorized by Reason", y = "Percentage of Respondents", x = "Reason for Abortion", fill = "Response") + theme_bw()
+```
+
+### Does the public opinion on abortion vary across time? How does it vary for each of the reasons for seeking abortion?  
+
+```{r}
+gss_abortion_noNA = gss_abortion_reason_long_noNA |> group_by(year, abortion_reason, response) |> summarize(n=n()) |> mutate(prop = n/sum(n))
+
+
+ggplot(gss_abortion_noNA |> filter(response == "yes" ), aes(x=year, y=prop, color = abortion_reason, na.rm=TRUE)) +
+  geom_point(size = 0.9,color = "black") +
+  geom_line() +
+  labs (x = "Year", y = "Proportion of Positive Responses", title = "Percentage of Respondents In Favor of Abortion Categorized \n  by Reason across Time (1972-2022)", color = "Abortion Reason") + theme_bw(12) +
+  scale_x_continuous(n.breaks = 14) +
+  scale_y_continuous()
+```
+
+
 ## Affirmative Action
 
 ### Which groups of people agree the most on affirmative action? Which differ the most?
