@@ -134,6 +134,22 @@ gss_ab_fct = gss_ab |>
 gss_ab_fct_noNA = gss_ab_fct |> drop_na(c(abdefect, abhlth,abrape, abpoor,abnomore,absingle)) |> filter(!(year %in% c(1977:2022) & is.na(abany)))
 ```
 
+Before we start data analysis, we first load the data and the variables we are interested in. We select specific abortion-related variables as well as demographic variables. We choose seven abortion variables representing  different reasons a woman could be seeking an abortion and respondents' view (Yes, No, Na) on whether a woman should be able to obtain a legal abortion for such a reason. The demographic variables selected are the following:
+* sex
+* age 
+* race 
+* degree: highest degree achieved
+* marital: marital status
+* childs: total number of children 
+* relig16: religion raised in 
+* relig: current religious preference
+* partyid: political party affiliation 
+* polviews: political/social views (think of self as liberal or conservative)
+* reg16: Region of residence at age 16
+* reg: region of interview
+
+We clean and transform the data by mutating categorical variables into factors with meaningful labels. We also remove the rows with NAs in the abortion-related columns. This is because we discovered through data exploration that the NAs pertaining to these variables represent inapplicable responses. Therefore, we remove these rows to ensure that we only use relevant and complete data for further analysis.
+
 
 ### Do people's opinion vary based on the reason a woman is seeking abortion ?
 
@@ -164,6 +180,13 @@ ggplot(gss_abortion_noNA |> filter(response == "yes" ), aes(x=year, y=prop, colo
   scale_x_continuous(n.breaks = 14) +
   scale_y_continuous()
 ```
+
+
+###
+
+
+###
+
 
 
 ## Affirmative Action
