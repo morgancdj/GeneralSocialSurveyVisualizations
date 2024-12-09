@@ -137,7 +137,7 @@ gss_ab_fct_noNA = gss_ab_fct |> drop_na(c(abdefect, abhlth,abrape, abpoor,abnomo
 
 ### Do people's opinion vary based on the reason a woman is seeking abortion ?
 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 # Transforming the data into long format
 gss_abortion_reason_long_noNA = gss_ab_fct_noNA |>
       pivot_longer(cols = c(abdefect, abhlth,abrape, abpoor,abnomore,absingle, abany), 
@@ -153,7 +153,7 @@ ggplot(gss_abortion_reason_long_noNA |> filter(!is.na(response)), aes(x=abortion
 
 ### Does the public opinion on abortion vary across time? How does it vary for each of the reasons for seeking abortion?  
 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 gss_abortion_noNA = gss_abortion_reason_long_noNA |> group_by(year, abortion_reason, response) |> summarize(n=n()) |> mutate(prop = n/sum(n))
 
 
