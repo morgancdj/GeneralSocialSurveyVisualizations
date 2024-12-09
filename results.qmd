@@ -238,11 +238,118 @@ Additionally, we observe that support for abortion for any reason is consistentl
 Notice that some of the trends observed in our data correspond to historical events in the U.S. that might have affected the public opinion on the question of abortion. For example, 1973 marks the year when the Roe v Wade decision was made by the US Supreme Court, legalizing abortion in the United States. As such, earlier support for abortion in the early 70s might have been fueled by this landmark decision. The rise of the religious right in the early 1980s as well as the passing of restrictive laws such as the Abortion Control Act of 1982 might have caused a decline in the public's support of abortion. The early 1990s marked a surge of violence against clinics and providers as well as the The Planned Parenthood v. Casey decision in 1992, which protected Roe but allowed for state restrictions against abortion. Following 2010, activism relating to reproductive rights increased with movements like "#Me Too" and the passing of more restrictive laws in states such as Texas and North Dakota. Under Trump's presidency, the anti-abortion movement continued to rise with more states attempting to pass more restrictive laws, however, this movement was faced by a rising push back although eventually the Dobbs case ultimately overturning Roe v Wade in 2022. [Source](https://www.theguardian.com/world/2021/nov/30/abortion-rulings-history-roe-v-wade)
 
 
-###
+### How does the public opinion on abortion vary for different demographic groups across time? How does it vary for each of the reasons for seeking abortion?  Which demographic show the most similarities amongst its groups and which shows the most differences?
+
+In this report, we focus on presenting graphs that highlight the most significant similarities and differences in responses regarding the legality of abortion across demographics. While we explored all the demographic categories outlined in the Data Cleaning section, we found that some groups in particular exhibited notable differences in opinion. However, upon further investigation, we found out that the results for some demographics might be misleading due to the small representation of certain groups in the survey. For example, when examining religious affiliations of respondents, we found that 82.68% of respondents identified as Christian, while only 2.08% were Jewish, 0.19% Muslim, and 0.15% Hindu. Between 1977 and 2022, only 15 Native Americans and 63 Hindus were surveyed. As such, we are unable to make meaningful comparisons within these religious groups as the sample size of certain groups in the survey is very small and therefore analysis of any trends can be misleading.
+A similar issue arose when analyzing responses based on the highest degree achieved and race. For example, we found that 81.16% of respondents are white, which means that the sample of respondents lacks in racial diversity. Additionally, note that the racial categories considered in the survey were limited to "White," "Black," and "Other," which further constrains the analysis.
+
+With this being said, we found that different groups within the age and sex demographics do show similar trends across time in their support of abortion based on the different abortion reasons. These groups are also equally represented in the survey, which makes the analysis valid. Note that for the age demographic, each 5 year group represents 8-11% of the respondents, therefore the different age groups are equally represented. Then, for the sex demographic, around 44% are male and 55% are female. We present below the graph showing the percentage of each sex group in favor of abortion by abortion reason across time - the groups in this demographic show the most similarity in their trend of abortion support.
+
+```{r, message=FALSE, warning=FALSE, fig.width = 20, fig.height = 18}
+prc_dem_sex_noNA = gss_ab_fct_noNA |>
+      pivot_longer(cols = c(`mother's health`,`rape`,`birth defect`,`financial hardship`,`married-no more children`,`not married`, `any reason`), 
+                   names_to = "abortion_reason",values_to = "response") |>
+      mutate(abortion_reason = factor(abortion_reason, levels= c("mother's health", "rape","birth defect", "financial hardship","married-no more children","not married", "any reason"))) |> group_by(year, abortion_reason, sex, response) |> summarize(n=n()) |> mutate(prop = n/sum(n))
+
+ggplot(prc_dem_sex_noNA |> filter(response == "yes", sex != is.na(sex)), aes(x=year, y=prop, color = abortion_reason)) +
+  geom_point(size = 0.9,color = "black") +
+  geom_line() +
+  labs (x = "Year", y = "Proportion of Positive Responses", title = "Change in Percentage of Repondents In Favor of Abortion by Demographic (Sex) Group Across Time (1972-2022)", color = "Abortion Reason") + theme_bw(19) +
+  scale_x_continuous(n.breaks = 14) +
+  scale_y_continuous() +
+  facet_wrap(~sex, ncol = 1)
+```
 
 
-###
+Interestingly, the two groups show similar patterns of abortion support over time across different reasons, which is somewhat unexpected, as one might assume that women, given that abortion directly affects them more than men, would show stronger support. However, between 2010 and 2015, men appear to show more support for abortion in cases where the pregnancy results from rape compared to women. Support for abortion when the mother's health is at risk also seems to be slightly higher among men. Additionally, the "married but does not want more children" category shows slightly more support from men than women between 2005 and 2015.
 
+The demographic category that shows the most divergent trends is the one based on political and social views. The results here are not surprising, as we observe a clear upward trend in abortion support over time among the most liberal respondents, with high support for all abortion reasons. In contrast, conservatives show a downward trend in support over time, with much lower support for abortion except in cases of rape, the mother’s health, or fetal abnormalities. Moderates and those who identify as slightly conservative show relatively little variation in their views on abortion across time. Although each group in this demographic is well represented in the survey, only 3% of respondents identify as extremely liberal and 3% as extremely conservative (approximately 1,220 individuals in each group). We believe this low percentage reflects societal variation, and the sample size is sufficiently robust for analysis.
+
+
+```{r, message=FALSE, warning=FALSE, fig.width = 20, fig.height = 20}
+prc_dem_polviews_noNA = gss_ab_fct_noNA |>
+      pivot_longer(cols = c(`mother's health`,`rape`,`birth defect`,`financial hardship`,`married-no more children`,`not married`, `any reason`), 
+                   names_to = "abortion_reason",values_to = "response") |>
+      mutate(abortion_reason = factor(abortion_reason, levels= c("mother's health", "rape","birth defect", "financial hardship","married-no more children","not married", "any reason"))) |> group_by(year, abortion_reason, polviews, response) |> summarize(n=n()) |> mutate(prop = n/sum(n))
+
+ggplot(prc_dem_polviews_noNA |> filter(response == "yes"), aes(x=year, y=prop, color = abortion_reason)) +
+  geom_point(size = 0.9,color = "black") +
+  geom_line() +
+  labs (x = "Year", y = "Proportion of Positive Responses", title = "Change in Percentage of Repondents In Favor of Abortion by Demographic (Social/Political Belief) Group Across Time (1972-2022)", color = "Abortion Reason") + theme_bw(19) +
+  scale_x_continuous(n.breaks = 14) +
+  scale_y_continuous() +
+  facet_wrap(~polviews, ncol = 2)
+
+```
+
+
+### Tracking the change of one age group (Respondents born around 1952)
+
+WILL LIKELY REMOVE THIS SECTION
+
+(Tracking the change in opinion across time for different age groups is an interesting case to look at. This is because while age-related changes and societal shifts can be discerned in a graph comparing age groups across time, this approach can also be misleading as it might be overlooking generational differences. Therefore, we would like to investigate the change in opinion across time for one generation and explore whether the opinion of one generation show similar trends to the general population's opinion across time. The results here are intriguing.
+
+We follow the group of respondents who were in their 20s around 1972 across time and compare the graph showing their change in opinion with the general population's. We first find that)
+
+
+```{r, message=FALSE, warning=FALSE, fig.width = 20, fig.height = 10}
+#Transforming the data to make the age variable categorical
+gss_age_one_group_noNA = gss_ab_fct_noNA |>
+      pivot_longer(cols = c(`mother's health`,`rape`,`birth defect`,`financial hardship`,`married-no more children`,`not married`, `any reason`), 
+                   names_to = "abortion_reason",values_to = "response") |>
+      select(c(year, abortion_reason, response, age)) |>
+      mutate(abortion_reason = factor(abortion_reason, levels= c("mother's health", "rape","birth defect", "financial hardship","married-no more children","not married", "any reason"))) |>
+      mutate(age = case_when(age < 20 ~ "16-19",
+                             age>=20 & age < 25 ~ "20-24",
+                             age>=25 & age < 30 ~ "25-29",
+                             age>=30 & age < 35 ~ "30-34",
+                             age>=35 & age < 40 ~ "35-39",
+                             age>=40 & age < 45 ~ "40-44",
+                             age>=45 & age < 50 ~ "45-49",
+                             age>=50 & age < 55 ~ "50-54",
+                             age>=55 & age < 60 ~ "55-59",
+                             age>=60 & age < 65 ~ "60-64",
+                             age>=65 & age <= 70 ~ "65-70",
+                             age>70 ~ "70+"))
+
+#Only keeping the data for the group of respondents who were 20 around 1972
+gss_age_one_group_y_noNA = gss_age_one_group_noNA |> 
+                  filter(
+                          (year >= 1972 & year < 1977 & age == "20-24") |
+                          (year >= 1977 & year < 1982 & age == "25-29") |
+                          (year >= 1982 & year < 1987 & age == "30-34") |
+                          (year >= 1987 & year < 1992 & age == "35-39") |
+                          (year >= 1992 & year < 1997 & age == "40-44") |
+                          (year >= 1997 & year < 2002 & age == "45-49") |
+                          (year >= 2002 & year < 2007 & age == "50-54") |
+                          (year >= 2007 & year < 2012 & age == "55-59") |
+                          (year >= 2012 & year < 2017 & age == "60-64") |
+                          (year >= 2017 & year <= 2022 & age == "65-70")
+                        )
+
+# Transforming the data to access proportions by year, abortion reason and response for this group
+gss_age_group_years_noNA = gss_age_one_group_y_noNA |> group_by(year, abortion_reason, response) |> summarize(n =n()) |> mutate(prop = n/sum(n))
+
+
+#Graph showing the trend for the group born around 1952 across time
+age_group_noNA = ggplot(gss_age_group_years_noNA|> filter(response == "yes"), aes(x=year, y=prop, color = abortion_reason)) +
+  geom_point(size = 0.9,color = "black") +
+  geom_line() +
+  labs (x = "Year", y = "Proportion of Positive Responses", title = "Following the Change in Opinion in Favor of Abortion for One Particular Group \n (people born around 1952) Accross Time") + theme_bw(12) +
+  theme(legend.position = "none") +
+  scale_x_continuous(n.breaks = 14) +
+  scale_y_continuous(limits = c(0.35, 1)) 
+
+#Graph showing the trend for the entire population across time
+entire_pop_noNA = ggplot(gss_abortion_noNA |> filter(response == "yes" ), aes(x=year, y=prop, color = abortion_reason, na.rm=TRUE)) +
+  geom_point(size = 0.9,color = "black") +
+  geom_line() +
+  labs (x = "Year", y = "   ", title = "Following the Change in Opinion in Favor of Abortion for the Entire Survey Sample Across Time \n ", color = "Abortion Reason") + theme_bw(12) +
+  scale_x_continuous(n.breaks = 14) +
+  scale_y_continuous(limits = c(0.35, 1))
+
+#ggpubr::ggarrange(age_group_noNA,entire_pop_noNA, widths = c(1.7,2))
+```
 
 
 ## Affirmative Action
@@ -253,7 +360,7 @@ Notice that some of the trends observed in our data correspond to historical eve
 library(gssr)
 library(dplyr)
 
-data(gss_all)
+#data(gss_all)
 years <- gss_which_years(gss_all, discaff) |> 
   filter(discaff == TRUE)
 
@@ -294,7 +401,7 @@ b
 # install.packages('gssr', repos = c('https://kjhealy.r-universe.dev', 'https://cloud.r-project.org'))
 # install.packages('gssrdoc', repos = c('https://kjhealy.r-universe.dev', 'https://cloud.r-project.org'))
 library(gssr)
-data(gss_all)
+#data(gss_all)
 
 # consistent color palette from RColorBrewer
 pal <- 'Greys'
