@@ -253,50 +253,112 @@ ggplot(prc_dem_polviews_noNA |> filter(response == "yes"), aes(x=year, y=prop, c
 
 ```
 
-
-
 ## Affirmative Action
-
-### Which groups of people agree the most on affirmative action? Which differ the most?
 
 ```{r, message=FALSE, warning=FALSE}
 library(gssr)
 library(dplyr)
 
-#data(gss_all)
-years <- gss_which_years(gss_all, discaff) |> 
-  filter(discaff == TRUE)
+data(gss_all)
+years <- gss_which_years(gss_all, affrmact) |> 
+  filter(affrmact == TRUE)
 
-discaff_years <- pull(years, year)
+affrmact_years <- pull(years, year)
 
-gss_d = filter(gss_all, year %in% discaff_years)
+gss_d = filter(gss_all, year %in% affrmact_years)
 ```
+In 1994, the General Social Survey began collecting data on public support or opposition for affirmative action - the practice of prioritizing black and other minority applicants for jobs and other positions in order to compensate for existing disparities created by historical discrimination. Specifically, two questions were added: "What do you think the chances are these days that a white person won't get a job or promotion while an equally or less qualified black person gets one instead" (coded in the dataset as `discaff`), and "Are you for or against preferential hiring and promotion of blacks?" (coded in the dataset as `affrmact`). We will primarily focus on the latter of these variables as it more directly approaches peoples' beliefs about social programs, but both of these are useful to investigate. These variables are coded in opposite directions: `discaff` is coded such that lower numbers indicate that the respondent believes affirmative action programs are likely to harm white applicants; while `affrmact` is coded such that lower numbers indicate more support for affirmative action.
 
-```{r, message=FALSE, warning=FALSE}
-library(dplyr)
-library(ggplot2)
-library(likert)
-library(tidyr)
-library(forcats)
-
-a <- gss_d |>
-  filter(!is.na(as.factor(discaff))) |>
-  ggplot(aes(y = haven::as_factor(region), fill = haven::as_factor(discaff))) + 
-  geom_bar(position = "fill")
-
-a
-```
+### Does the public opinion on affirmative action vary consistently by region over time?
 
 ```{r, message=FALSE, warning=FALSE}
 year_averages <- gss_d |>
-  filter(!is.na(as.factor(discaff))) |>
-  group_by(year, region) |>
-  summarize(avg = mean(discaff))
+  filter(!is.na(as.factor(affrmact)), !is.na(as.factor(discaff))) |>
+  mutate(region_recode = fct_recode(haven::as_factor(region), 
+                            "midwest" = "west north central",
+                            "midwest" = "east north central",
+                            "northeast" = "new england",
+                            "northeast" = "middle atlantic",
+                            "south" = "west south central",
+                            "south" = "east south atlantic",
+                            "south" = "south atlantic")) |>
+  group_by(year, region_recode) |>
+  summarize(affrmact_avg = mean(affrmact), discaff_avg = mean(discaff))
 
-b <- ggplot(year_averages, aes(x = year, y = avg, color = haven::as_factor(region))) + 
-  geom_point()
+b <- ggplot(year_averages, aes(x = year, y = affrmact_avg, color = region_recode)) + 
+  geom_point(size = 0.9, color = "black") +
+  geom_line() + 
+  scale_color_discrete(name = "region") +
+  theme_bw(12) + 
+  labs(y = "Average Support to Opposition on a 1-4 scale") +
+  scale_color_brewer(palette="Set1", name = "Region") + 
+  ggtitle("Regional Opinions on Affirmative Action Over Time")
 b
 ```
+We first examine whether there is consistent regional variation for support (lower-number responses on this scale) or opposition (higher-number responses on this scale) over the period of time that affirmative action has been on the GSS. Interestingly, the only pattern that really stands out is that the northeast has been generally more likely to support affirmative action over the time where the question was asked, while other regions have oscillated in their relative positions over time. This is perhaps indicative that political divisions on this issue are less regionally varied than the standard political assumptions that political analysts tend to make.
+
+### Do views on affirmative action vary with political views?
+```{r, fig.height=7, message=FALSE, warning=FALSE}
+year_averages_pol <- gss_d |>
+  filter(!is.na(as.factor(affrmact)), !is.na(as.factor(discaff)), !is.na(as.factor(polviews))) |>
+  group_by(year, polviews) |>
+  summarize(affrmact_avg = mean(affrmact), discaff_avg = mean(discaff))
+
+c <- ggplot(year_averages_pol, aes(x = affrmact_avg, y = discaff_avg, color= haven::as_factor(polviews))) + 
+  geom_point(size = 3) + 
+  labs(x = "Average Support to Opposition for Affirmative Action on a 1-4 scale",
+       y = "Average Belief that Affirmative Action Does Not Harm White People on a 1-3 scale") + 
+  ggtitle("Correlation between different views on Affirmative Action, by Political Leaning") + 
+  scale_color_brewer(palette = "Dark2", name = "Political Views") + 
+  theme_bw(12)
+c
+```
+Here, we can see a clear correlation between support for affirmative action and the belief that it does not harm white people when implemented, as one might expect. Each point is a single year's sample, split between the options for self-described political views provided by the GSS, taking the average of responses to those variables. Interestingly, it is not a particularly tight correlation, with a fairly wide spread in the relationship between the two variables, although there is evident clustering on the political view scale, with people who have similar political views having fairly similar views on affirmative action. However, that clustering has a lot of overlap, and could not be derived without knowing the respondents' self-identified political views. In fact, we can see overlap of groups as disparate as "moderate" and "extremely conservative", though we do not see as much overlap between groups on the liberal side of the spectrum.
+
+### Variation in opinions across generations
+```{r, fig.height=6}
+ year_averages_by <- gss_d |>
+   filter(!is.na(as.factor(affrmact)), !is.na(as.factor(age))) |>
+   mutate(birthyear = year - age)
+
+d <- ggplot(year_averages_by, aes(x=birthyear, fill=haven::as_factor(affrmact))) +
+  geom_bar(position="fill") + 
+  theme_bw(12) + 
+  scale_fill_brewer(palette = "Set1", name = "Opinion on Affirmative Action") + 
+  labs(y = "Proportion of population", x = "Birth Year") + 
+  ggtitle("Distribution of Opinions on Affirmative Action by Birth Year")
+d
+```
+
+In this chart, we calculate the approximate birth year of respondents based on their age at the time of the survey. We can see that as pepole get younger, they are significantly more likely to favor affirmative action, though no group ever reached a majority in favor until very recently - and either tail end should be taken as likely very distorted due to a smaller sample size. The main feature evident here is that over time, the proportion of respondents answering "strongly favors" is mainly what has increased, with the "strongly opposes" decreasing, while the less-extreme views essentially stay consistent in their proportions. 
+
+### Do opinions on affirmative action vary with employment status?
+
+```{r, fig.width=10, fig.height=15, message=FALSE, warning=FALSE}
+a <- gss_d |>
+  filter(!is.na(as.factor(affrmact)), !is.na(as.factor(wrkstat))) |>
+  mutate(worknew = fct_recode(haven::as_factor(wrkstat),
+                          "employed" = "with a job, but not at work because of temporary illness, vacation, strike",
+                          "employed" = "working part time",
+                          "employed" = "working full time",
+                          "stay-at-home" = "keeping house",
+                          "unemployed" = "unemployed, laid off, looking for work")) |>
+  group_by(affrmact, worknew, year) |>
+  summarize(count = n()) |>
+  group_by(worknew, year) |>
+  mutate(prop = count/sum(count)) |>
+  ggplot(aes(x=year, color = haven::as_factor(affrmact), y = prop)) +
+  geom_point(size = 0.9, color = 'black') + 
+  geom_line() +
+  facet_wrap(~worknew, ncol=1) + 
+  scale_color_brewer(name = "Opinion on Affirmative Action", palette = "Set1") + 
+  labs(x = "Proportion of respondents") + 
+  ggtitle("Variation of Viewpoints on Affirmative Action over time, by Employment Status") + 
+  theme_bw(12)
+a
+```
+
+Political scientists often hypothesize that economic circumstances are correlated with beliefs about racial resentment, so we will break the responses over time down by employment status. As with other trends, we do see decreasing opposition to affirmative action for most groups, though the steepest decrease occurs with respondents currently in school. Interestingly, the unemployed also have a fairly large change over time, moreso than the currently-employed, while retired people and people who choose not to be employed in order to stay at home show less distinct changes in their opinions, but still broadly follow the same trends. However, generally, we see that both the unemployed and employed have similar feelings about affirmative action as each other over time
 
 ## Capital Punishment
 
