@@ -221,7 +221,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="data-cleaning" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="data-cleaning"><span class="header-section-number">2.2</span> Data Cleaning</h2>
-<p>Before we start data analysis, we first load the data and the variables we are interested in. The data can be easily accessed through the <code>gssr</code> package. We select specific abortion-related variables as well as demographic variables. We choose seven abortion variables each representing a different reason a woman could be seeking an abortion and respondents’ opinion (Yes, No, NA) on whether a woman should be able to obtain a legal abortion for such a reason. The demographic variables selected are the following:</p>
+<p>Before we start data analysis, we first load the data and the variables we are interested in. The data can be easily accessed through the <code>gssr</code> package. We select the following demogrhic variables for our analysis:</p>
 <ul>
 <li><p>sex</p></li>
 <li><p>age</p></li>
@@ -236,7 +236,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>reg16: Region of residence at age 16</p></li>
 <li><p>reg: region of interview</p></li>
 </ul>
-<p>We clean and transform the data by mutating categorical variables into factors with meaningful labels. We also remove the rows with NA values in the abortion-related columns. This is because we discovered through data exploration that the NA values pertaining to these variables represent inapplicable responses. Therefore, we remove these rows to ensure that we only use relevant and complete data for further analysis.</p>
+<p>We select specific abortion, affirmative action, and capital punishment variables. With regards to abortion, we choose seven abortion variables each representing a different reason a woman could be seeking an abortion and respondents’ opinion (Yes, No, NA) on whether a woman should be able to obtain a legal abortion for such a reason.</p>
+<p>For affirmative action, we look at …………..</p>
+<p>For capital punishment, we look at …………</p>
+<p>We clean and transform the data by mutating categorical variables into factors with meaningful labels. We also remove the rows with NA values in the abortion-related columns. This is because we discovered through data exploration that the NA values pertaining to these variables represent inapplicable responses. Therefore, we remove these rows to ensure that we only use relevant and complete data for further analysis. <em>Anything similar for aff action and cappun</em></p>
 </section>
 <section id="missing-value-analysis" class="level2" data-number="2.3">
 <h2 data-number="2.3" class="anchored" data-anchor-id="missing-value-analysis"><span class="header-section-number">2.3</span> Missing value analysis</h2>
