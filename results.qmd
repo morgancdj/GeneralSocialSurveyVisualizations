@@ -2,9 +2,8 @@
 
 ## Abortion
 
-### Data Cleaning
 
-```{r, message=FALSE, warning=FALSE}
+```{r, message=FALSE, warning=FALSE, echo=FALSE}
 library(dplyr)
 library(tidyr)
 library(ggplot2)
@@ -144,34 +143,6 @@ gss_ab_fct = gss_ab_fct |>
 # Removing rows containing NAs in the abortion variables - These NAs refer to "inapplicable" responses
 gss_ab_fct_noNA = gss_ab_fct |> drop_na(c(`mother's health`,`birth defect`,`rape`,`financial hardship`,`married-no more children`,`not married`)) |> filter(!(year %in% c(1977:2022) & is.na(`any reason`)))
 ```
-
-Before we start data analysis, we first load the data and the variables we are interested in. The data can be easily accessed through the `gssr` package We select specific abortion-related variables as well as demographic variables. We choose seven abortion variables each representing a different reason a woman could be seeking an abortion and respondents' opinion (Yes, No, NA) on whether a woman should be able to obtain a legal abortion for such a reason. The demographic variables selected are the following:
-
-- sex
-
-- age 
-
-- race 
-
-- degree: highest degree achieved
-
-- marital: marital status
-
-- childs: total number of children 
-
-- relig16: religion raised in 
-
-- relig: current religious preference
-
-- partyid: political party affiliation 
-
-- polviews: political/social views (think of self as liberal or conservative)
-
-- reg16: Region of residence at age 16
-
-- reg: region of interview
-
-We clean and transform the data by mutating categorical variables into factors with meaningful labels. We also remove the rows with NA values in the abortion-related columns. This is because we discovered through data exploration that the NA values pertaining to these variables represent inapplicable responses. Therefore, we remove these rows to ensure that we only use relevant and complete data for further analysis.
 
 
 ### Does the public opinion on abortion vary based on the reason a woman is seeking abortion ?
