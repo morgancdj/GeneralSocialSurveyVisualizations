@@ -272,6 +272,7 @@ In 1994, the General Social Survey began collecting data on public support or op
 ### Does the public opinion on affirmative action vary consistently by region over time?
 
 ```{r, message=FALSE, warning=FALSE}
+library(forcats)
 year_averages <- gss_d |>
   filter(!is.na(as.factor(affrmact)), !is.na(as.factor(discaff))) |>
   mutate(region_recode = fct_recode(haven::as_factor(region), 
