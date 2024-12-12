@@ -283,74 +283,6 @@ ggplot(prc_dem_polviews_noNA |> filter(response == "yes"), aes(x=year, y=prop, c
 ```
 
 
-### Tracking the change of one age group (Respondents born around 1952)
-
-WILL LIKELY REMOVE THIS SECTION
-
-(Tracking the change in opinion across time for different age groups is an interesting case to look at. This is because while age-related changes and societal shifts can be discerned in a graph comparing age groups across time, this approach can also be misleading as it might be overlooking generational differences. Therefore, we would like to investigate the change in opinion across time for one generation and explore whether the opinion of one generation show similar trends to the general population's opinion across time. The results here are intriguing.
-
-We follow the group of respondents who were in their 20s around 1972 across time and compare the graph showing their change in opinion with the general population's. We first find that)
-
-
-```{r, message=FALSE, warning=FALSE, fig.width = 20, fig.height = 10}
-#Transforming the data to make the age variable categorical
-gss_age_one_group_noNA = gss_ab_fct_noNA |>
-      pivot_longer(cols = c(`mother's health`,`rape`,`birth defect`,`financial hardship`,`married-no more children`,`not married`, `any reason`), 
-                   names_to = "abortion_reason",values_to = "response") |>
-      select(c(year, abortion_reason, response, age)) |>
-      mutate(abortion_reason = factor(abortion_reason, levels= c("mother's health", "rape","birth defect", "financial hardship","married-no more children","not married", "any reason"))) |>
-      mutate(age = case_when(age < 20 ~ "16-19",
-                             age>=20 & age < 25 ~ "20-24",
-                             age>=25 & age < 30 ~ "25-29",
-                             age>=30 & age < 35 ~ "30-34",
-                             age>=35 & age < 40 ~ "35-39",
-                             age>=40 & age < 45 ~ "40-44",
-                             age>=45 & age < 50 ~ "45-49",
-                             age>=50 & age < 55 ~ "50-54",
-                             age>=55 & age < 60 ~ "55-59",
-                             age>=60 & age < 65 ~ "60-64",
-                             age>=65 & age <= 70 ~ "65-70",
-                             age>70 ~ "70+"))
-
-#Only keeping the data for the group of respondents who were 20 around 1972
-gss_age_one_group_y_noNA = gss_age_one_group_noNA |> 
-                  filter(
-                          (year >= 1972 & year < 1977 & age == "20-24") |
-                          (year >= 1977 & year < 1982 & age == "25-29") |
-                          (year >= 1982 & year < 1987 & age == "30-34") |
-                          (year >= 1987 & year < 1992 & age == "35-39") |
-                          (year >= 1992 & year < 1997 & age == "40-44") |
-                          (year >= 1997 & year < 2002 & age == "45-49") |
-                          (year >= 2002 & year < 2007 & age == "50-54") |
-                          (year >= 2007 & year < 2012 & age == "55-59") |
-                          (year >= 2012 & year < 2017 & age == "60-64") |
-                          (year >= 2017 & year <= 2022 & age == "65-70")
-                        )
-
-# Transforming the data to access proportions by year, abortion reason and response for this group
-gss_age_group_years_noNA = gss_age_one_group_y_noNA |> group_by(year, abortion_reason, response) |> summarize(n =n()) |> mutate(prop = n/sum(n))
-
-
-#Graph showing the trend for the group born around 1952 across time
-age_group_noNA = ggplot(gss_age_group_years_noNA|> filter(response == "yes"), aes(x=year, y=prop, color = abortion_reason)) +
-  geom_point(size = 0.9,color = "black") +
-  geom_line() +
-  labs (x = "Year", y = "Proportion of Positive Responses", title = "Following the Change in Opinion in Favor of Abortion for One Particular Group \n (people born around 1952) Accross Time") + theme_bw(12) +
-  theme(legend.position = "none") +
-  scale_x_continuous(n.breaks = 14) +
-  scale_y_continuous(limits = c(0.35, 1)) 
-
-#Graph showing the trend for the entire population across time
-entire_pop_noNA = ggplot(gss_abortion_noNA |> filter(response == "yes" ), aes(x=year, y=prop, color = abortion_reason, na.rm=TRUE)) +
-  geom_point(size = 0.9,color = "black") +
-  geom_line() +
-  labs (x = "Year", y = "   ", title = "Following the Change in Opinion in Favor of Abortion for the Entire Survey Sample Across Time \n ", color = "Abortion Reason") + theme_bw(12) +
-  scale_x_continuous(n.breaks = 14) +
-  scale_y_continuous(limits = c(0.35, 1))
-
-#ggpubr::ggarrange(age_group_noNA,entire_pop_noNA, widths = c(1.7,2))
-```
-
 
 ## Affirmative Action
 
@@ -549,7 +481,7 @@ ggplot(relig_summary, aes(x = relig, y = proportion)) +
             vjust = -0.5, size = 4) +
   scale_y_continuous(labels = scales::percent, limits = c(0, 1)) +
   labs(title = "Support for Capital Punishment by Religion",
-       x = NULL,
+       x = "Religion",
        y = "Proportion Favoring") +
   theme_bw()
 ```
