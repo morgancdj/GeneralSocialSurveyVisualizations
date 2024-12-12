@@ -402,7 +402,7 @@ library(gssr)
 data(gss_all)
 ```
 
-### Decline in support for capital punishment over the past 50 years
+### Declining support for capital punishment over the past 50 years
 The decline in support for capital punishment beginning in the 1990s is likely attributed to multiple factors. Some of these include growing awareness of wrongful convictions highlighted by DNA exoneration, concerns about racial disparities in sentencing, and shifting moral perspectives on state-sanctioned executions. Additionally, declining crime rates in the late 1990s and 2000s may have reduced public demand for harsh punishments. The emergence of life without parole as an alternative sentence and increased focus on the high costs of death penalty cases also likely contributed to this trend. While no single factor can be pinpointed as the sole cause, this combination of legal, social, and economic considerations has likely shaped public opinion over time.
 
 ```{r, message=FALSE, warning=FALSE}
@@ -422,7 +422,10 @@ cappun_summary <- cappun_data |>
   group_by(year) |>
   mutate(proportion = count / sum(count))
 
-ggplot(cappun_summary, aes(x = year, y = proportion, fill = cappun, color = cappun)) +
+ggplot(cappun_summary, aes(x = year, 
+                           y = proportion, 
+                           fill = cappun, 
+                           color = cappun)) +
   geom_area(alpha = 0.2, position = "identity") +
   geom_line() +
   scale_fill_manual(values = c("Favor" = "gray10", "Oppose" = "gray90")) +
@@ -535,7 +538,8 @@ relig_summary <- cappun_data |>
   mutate(proportion = count / sum(count)) |>
   filter(cappun == "Favor", !is.na(relig))
 
-correct_order <- c("protestant", "catholic", "jewish", "christian", "none", "hinduism", "islam", "buddhism")
+correct_order <- c("protestant", "catholic", "jewish", "christian", 
+                   "none", "hinduism", "islam", "buddhism")
 relig_summary <- relig_summary |>
   mutate(relig = factor(relig, levels = correct_order))
 
@@ -548,5 +552,36 @@ ggplot(relig_summary, aes(x = relig, y = proportion)) +
        x = NULL,
        y = "Proportion Favoring") +
   theme_bw()
+```
+
+
+```{r, echo=FALSE}
+# FOR INTERACTIVE GRAPH
+library(dplyr)
+cappun_data <- gss_all |>
+  select(year, relig, cappun) |>
+  filter(cappun %in% c(1,2)) |>
+  mutate(
+    cappun = factor(cappun, levels = c(1, 2), labels = c("Favor", "Oppose")),
+    relig = factor(relig, levels = c(1,2,3,4,6,7,9,11), labels = c(
+      "protestant", "catholic", "jewish", "none", 
+      "buddhism", "hinduism", "islam", "christian"))
+  )
+
+cappun_summary <- cappun_data %>%
+  group_by(year, relig) %>%
+  summarize(
+    total = n(),
+    oppose = sum(cappun == "Oppose"),
+    pct_oppose = (oppose / total) * 100,
+    .groups = "drop"
+  ) %>%
+  filter(!is.na(relig)) %>%  # Remove any NA religion entries if they exist
+  arrange(year, relig)
+
+# Round the percentage to two decimal places
+cappun_summary$pct_oppose <- round(cappun_summary$pct_oppose, 0)
+# write.csv(cappun_summary, './cappun_by_religion.csv')
+
 ```
 

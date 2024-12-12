@@ -1,17 +1,90 @@
 # Interactive graph
 
 <style>
-  * {
-    font-family: sans-serif;
+  #chart {
+      <!-- background-color: white; -->
+      <!-- box-shadow: 0 4px 6px rgba(0,0,0,0.1); -->
+      <!-- border-radius: 8px; -->
+      <!-- padding: 20px; -->
+      <!-- font-family: Arial, sans-serif; -->
+      <!-- max-width: 900px; -->
+      <!-- margin: 0 auto; -->
+      <!-- padding: 20px; -->
+      <!-- background-color: #f4f4f4; -->
   }
-</style> 
+  span#currentYear {
+    color: white;
+  }
+  text {
+    fill: white;
+  }
+  text.axis-label {
+    fill: white;    
+  }
+  .bar {
+      fill: #19c399;
+      transition: fill 0.3s ease;
+  }
+  .bar:hover {
+      fill: #287562;
+  }
+  .axis-label {
+      font-size: 12px;
+      fill: #333;
+  }
+  #controls {
+      margin-top: 20px;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+  }
+  button {
+      background-color: #19c399;
+      color: white;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+  }
+  button:hover {
+      background-color: #287562;
+  }
+  button:disabled {
+      background-color: #bdc3c7;
+      cursor: not-allowed;
+  }
+  #yearInput {
+      padding: 6px;
+      width: 80px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      background-color: #dee2e6;
+  }
+  #currentYear {
+      font-weight: bold;
+      color: #2c3e50;
+  }
+</style>
 
-<div id="plot">
-<svg id="svg" width="350" height="350"></svg>
-<div id="slider" style="padding-left: 16px;">
-  <input type="range" min="1" max="200" value="50" class="slider"></input>
+<title>Capital Punishment Opposition by Religion: 1972-2022</title>
+<h1>Capital Punishment Opposition by Religion: 1972-2022</h1>
+
+<div id="chart"></div>
+<div id="controls">
+  <button id="startBtn">Start</button>
+  <button id="stopBtn" disabled>Stop</button>
+  <button id="resetBtn">Reset</button>
+  <span id="currentYear"></span>
+  <input type="number" id="yearInput" min="" max="" placeholder="Go to year">
+  <button id="goToYearBtn">Go</button>
 </div>
-</div>
+
 
 <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+<script src="https://d3js.org/d3.v7.min.js"></script>
 <script src="scripts/myscript.js"></script>
+
+
