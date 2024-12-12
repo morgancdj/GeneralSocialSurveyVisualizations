@@ -6,13 +6,13 @@ The data will be retrieved from the General Social Survey (GSS), a nationally re
 
 ### Data Sources
 
- * https://gss.norc.org/us/en/gss/about-the-gss.html - about the GSS
- * https://gssdataexplorer.norc.org/ - in-browser data explorer for the GSS
+ * [About the GSS](https://gss.norc.org/us/en/gss/about-the-gss.html)
+ * [In-browser data explorer for the GSS](https://gssdataexplorer.norc.org/)
  
 
 ## Data Cleaning
 
-Before we start data analysis, we first load the data and the variables we are interested in. The data can be easily accessed through the `gssr` package. We select the following demogrhic variables for our analysis: 
+Before we start data analysis, we first load the data and the variables we are interested in. The data can be easily accessed through the `gssr` package. We select the following demograhic variables for our analysis: 
 
 - sex
 
