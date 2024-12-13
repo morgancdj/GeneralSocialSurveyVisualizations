@@ -46,6 +46,7 @@ library(gssr)
 library(gssrdoc)
 library(naniar)
 library(dplyr)
+library(ggplot2)
 data(gss_all)
 gss_all |>
   select(abany, discaff, cappun, region, age, childs, sex, relig) |>
@@ -53,6 +54,66 @@ gss_all |>
 ```
 
 Above, we can see a quick visualization of the primary variables - both dependent and independent - and which ones are missing. Not all questions were asked in all years of the survey. The main pattern here is that our response variables (abany = "Whether it should be possible for a pregnant woman to obtain a legal abortion if the woman wants it for any reason"; discaff = "What do you think the chances are these days that a white person won't get a job or promotion while an equally or less qualified black person gets one instead?"; cappun = "Do you favor or oppose the death penalty for persons convicted of murder?") are much more likely to be missing. This is because not every question was asked every year of the survey, and respondents are more likely to refuse to answer controversial questions than demographic data such as region, age, etc.
+
+### Abortion: Missing Variables
+
+
+In our analysis of public opinion on abortion using the GSS data, we initially noticed a significant increase in the proportion of missing (NA) responses on abortion-related variables in some years, which led to suspicious decreases in the percentage of respondents in favor of abortion. Upon further investigation, we found that the missing responses were predominantly categorized as "NA(i)" (inapplicable), with only a small percentage of "NA(d)" (don't know) responses, which would be expected in a survey of this nature. This observation regarding how missing data was encoded raised concerns, as it suggested that all forms of missing data, whether due to uncertainty or irrelevance, were grouped into a single "inapplicable" category. This approach rendered the NA category essentially meaningless for our analysis, as it no longer provided any insight into uncertainty or indecision. Since the inapplicable responses could not provide meaningful insights into people's views on abortion, we decided to remove them from our analysis. This decision was crucial, as including these NAs distorted the true proportions of "yes" and "no" responses, leading to potentially misleading conclusions about trends in abortion attitudes over time.
+
+Below is a graph showing the percentage of missing values in each of the abortion-related variables we investigate in our analysis. Note that all the variables have a high percentage of missing values around 45% for "abrtion for any reason" and around 35% for all other variables. Additionally, note that most of the missing values are inapplicable responses with over 90% of all missing values being inapplicable responses.
+
+any reason	45.76			
+rape	35.78			
+financial hardship	35.67			
+not married	35.66			
+married-no more children	35.60			
+birth defect	35.48			
+mother's health	35.17	
+
+
+```{r, warning = False, message = False, fig.height = 10, fig.width = 10}
+gss_ab = gss_all |>
+  select(c(year, abdefect, abnomore, abhlth, abpoor, abrape, absingle, abany, sex, age, race, degree, relig, relig16, marital, partyid, polviews, childs, region, reg16))
+
+abdefect = data.frame(base::table(haven::as_factor(gss_ab$abdefect, levels = "labels"))) |> mutate(nrow = sum(Freq)) |> mutate(Perc = round(Freq*100/nrow,2), abdefect = Var1) |> select(abdefect, Freq, nrow, Perc)|> filter(!(abdefect %in% c("yes","no") | Freq ==0)) |> select(abdefect, Perc) |> mutate(response = abdefect, reason = rep("abdefect", 4)) |> select(reason,response, Perc)
+
+
+abrape = data.frame(base::table(haven::as_factor(gss_ab$abrape, levels = "labels"))) |> mutate(nrow = sum(Freq)) |> mutate(Perc = round(Freq*100/nrow,2), abrape = Var1) |> select(abrape, Freq, nrow, Perc)|> filter(!(abrape %in% c("yes","no") | Freq ==0)) |> select(abrape, Perc) |> mutate(response = abrape, reason = rep("abrape", 4)) |> select(reason,response, Perc)
+
+abhlth = data.frame(base::table(haven::as_factor(gss_ab$abhlth, levels = "labels"))) |> mutate(nrow = sum(Freq)) |> mutate(Perc = round(Freq*100/nrow,2), abhlth = Var1) |> select(abhlth, Freq, nrow, Perc)|> filter(!(abhlth %in% c("yes","no") | Freq ==0)) |> select(abhlth, Perc) |> mutate(response = abhlth, reason = rep("abhlth", 4)) |> select(reason,response, Perc)
+
+abpoor = data.frame(base::table(haven::as_factor(gss_ab$abpoor, levels = "labels"))) |> mutate(nrow = sum(Freq)) |> mutate(Perc = round(Freq*100/nrow,2), abpoor = Var1) |> select(abpoor, Freq, nrow, Perc)|> filter(!(abpoor %in% c("yes","no") | Freq ==0)) |> select(abpoor, Perc) |> mutate(response = abpoor, reason = rep("abpoor", 4)) |> select(reason,response, Perc)
+
+abnomore = data.frame(base::table(haven::as_factor(gss_ab$abnomore, levels = "labels"))) |> mutate(nrow = sum(Freq)) |> mutate(Perc = round(Freq*100/nrow,2), abnomore = Var1) |> select(abnomore, Freq, nrow, Perc)|> filter(!(abnomore %in% c("yes","no") | Freq ==0)) |> select(abnomore, Perc) |> mutate(response = abnomore, reason = rep("abnomore", 4)) |> select(reason,response, Perc)
+
+absingle = data.frame(base::table(haven::as_factor(gss_ab$absingle, levels = "labels"))) |> mutate(nrow = sum(Freq)) |> mutate(Perc = round(Freq*100/nrow,2), absingle = Var1) |> select(absingle, Freq, nrow, Perc)|> filter(!(absingle %in% c("yes","no") | Freq ==0)) |> select(absingle, Perc) |> mutate(response = absingle, reason = rep("absingle", 4)) |> select(reason,response, Perc)
+
+abany = data.frame(base::table(haven::as_factor(gss_ab$abany, levels = "labels"))) |> mutate(nrow = sum(Freq)) |> mutate(Perc = round(Freq*100/nrow,2), abany = Var1) |> select(abany, Freq, nrow, Perc)|> filter(!(abany %in% c("yes","no") | Freq ==0)) |> select(abany, Perc) |> mutate(response = abany, reason = rep("abany", 4)) |> select(reason,response, Perc)
+
+NA_percentage = rbind(abhlth, abrape, abdefect, abpoor, abnomore, absingle, abany)
+
+NA_percentage_b = NA_percentage |> 
+  mutate(response = factor(response, levels = c("iap", "don't know", "no answer", "skipped on web"))) |> 
+  mutate(reason = case_when(reason == "abhlth" ~ "mother's health",
+                                                 reason == "abrape" ~ "rape",
+                                                 reason == "abdefect" ~ "birth defect",
+                                                 reason == "abpoor" ~ "financial hardship",
+                                                 reason == "abnomore" ~ "married-no more children",
+                                                 reason == "absingle" ~ "not married",
+                                                 reason == "abany" ~ "any reason")) |>
+  mutate(response = recode(response, iap = "inapplicable"))
+
+
+inv = NA_percentage_b |> group_by(reason) |> summarize(sum(Perc)) |> arrange(desc(`sum(Perc)`)) |> select(reason)
+
+                          
+ggplot(NA_percentage_b |> mutate(reason = factor(reason, levels = inv$reason)), aes(x=reason, y= Perc, fill = response)) +
+  geom_col() +
+  labs(x = "Reason for abortion", y = "Percentage of missing values (NA) in the responses", title = "Percentage of Missing Values (NA) in Responses to Abortion Questions by NA Label") +
+  theme_bw()
+
+```
+
 
 ### Capital Punishment (cappun) missing row analysis
 ```{r, message=FALSE, warning=FALSE}
