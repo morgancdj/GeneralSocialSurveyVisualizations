@@ -32,15 +32,11 @@ We select the following demographic variables for our analysis:
 
 We select specific abortion, affirmative action, and capital punishment variables. With regards to abortion, we choose seven abortion variables each representing a different reason a woman could be seeking an abortion and respondents' opinion (Yes, No, NA) on whether a woman should be able to obtain a legal abortion for such a reason. 
 
-<<<<<<< HEAD
 For affirmative action, we look at two opinion survey variables, `discaff` (which asks whether the respondent believes that white people are harmed by affirmative action), and `affrmact` (which asks about the respondents general support for affirmative action in the workplace).
 
 For capital punishment, we look at `cappun`, which asks the respondents opinion on whether the death penalty should be a punishment for a murder conviction.
 
 We clean and transform the data by mutating categorical variables into factors with meaningful labels. We also remove the rows with NA values in the abortion-related columns. This is because we discovered through data exploration that the NA values pertaining to these variables represent inapplicable responses. Therefore, we remove these rows to ensure that we only use relevant and complete data for further analysis. Similarly, inapplicable responses for capital punishment and affirmative action questions were discarded, as well as NA values for the demographic indicators we are investigating.
-=======
-We clean and transform the data by mutating categorical variables into factors with meaningful labels. We also remove the rows with NA values in the abortion-related columns. This is because we discovered through data exploration that the NA values pertaining to these variables represent inapplicable responses. Therefore, we remove these rows to ensure that we only use relevant and complete data for further analysis.
->>>>>>> dec-12
 
 ## Missing value analysis
 
@@ -67,7 +63,7 @@ In our analysis of public opinion on abortion using the GSS data, we initially n
 Below is a graph showing the percentage of missing values in each of the abortion-related variables we investigate in our analysis. Note that all the variables have a high percentage of missing values around 45% for "abortion for any reason" and around 35% for all other variables. Additionally, note that most of the missing values are inapplicable responses with over 90% of all missing values being inapplicable responses.
 
 
-```{r, warning = False, message = False, fig.height = 10, fig.width = 10}
+```{r, warning = FALSE, message = FALSE, fig.height = 10, fig.width = 10}
 gss_ab = gss_all |>
   select(c(year, abdefect, abnomore, abhlth, abpoor, abrape, absingle, abany, sex, age, race, degree, relig, relig16, marital, partyid, polviews, childs, region, reg16))
 
@@ -112,6 +108,7 @@ ggplot(NA_percentage_b |> mutate(reason = factor(reason, levels = inv$reason)), 
 
 
 ### Capital Punishment (cappun) missing row analysis
+The missing data analysis reveals that there are significant gaps in the information collected for this survey. The variable with the highest rate of missing values is religion, with 60.14% of responses lacking this data point. Region also has a high rate of missingness at 33.41%. Other variables with substantial missing information include degree (22.92% missing), sex (27.67% missing), and race (27.80% missing). The variable with the lowest rate of missing data is age, but even here 18.91% of responses are incomplete. These high levels of missingness across multiple key demographic variables could introduce bias and limit the conclusions that can be drawn from the analysis. It will be important to carefully consider how to address these gaps, whether through imputation techniques or by restricting the analysis to only complete cases, in order to obtain reliable insights from the Capital Punishment dataset.
 ```{r, message=FALSE, warning=FALSE}
 library(ggplot2)
 library(dplyr)
