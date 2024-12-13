@@ -6,7 +6,7 @@ execute:
   echo: true
 
 book:
-  title: "Opinions Over Time: Visualizing Survey Data from the General Social Survey (1972-2022)"
+  title: "Social Opinions Over Time: Visualizing Public Opinion on Abortion, Affirmative Action, and Capital Punishment from 1972-2022"
   author:
     - Jared Donohue (jjd2203)
     - Morgan Jackson (mcj2158)

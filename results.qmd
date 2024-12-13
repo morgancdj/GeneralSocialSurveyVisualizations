@@ -524,8 +524,8 @@ cappun_data <- gss_all |>
       "buddhism", "hinduism", "islam", "christian"))
   )
 
-cappun_summary <- cappun_data %>%
-  group_by(year, relig) %>%
+cappun_summary <- cappun_data |>
+  group_by(year, relig) |>
   summarize(
     total = n(),
     oppose = sum(cappun == "Oppose"),
@@ -538,6 +538,5 @@ cappun_summary <- cappun_data %>%
 # Round the percentage to two decimal places
 cappun_summary$pct_oppose <- round(cappun_summary$pct_oppose, 0)
 # write.csv(cappun_summary, './cappun_by_religion.csv')
-
 ```
 
