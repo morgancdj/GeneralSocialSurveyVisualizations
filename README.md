@@ -1,13 +1,17 @@
 ## About
-This project explores public opinions on affirmative action, abortion, and capital punishment through exploratory data analysis and visualizations.
+This project visualizes public opinion on affirmative action, abortion, and 
+capital punishment from 1972-2022, using data from the General Social Survey (GSS).
+We investigate how different groups’ opinions have shifted over time and explore 
+overall trends in public opinion. 
 
 ## Data
-Using data from the General Social Survey (GSS), we investigate how different groups’ opinions have shifted over time and explore any correlations between these views and the demographic factors. This analysis will provide a clearer picture of the broader trends in public opinion and the factors that influence these complex issues.
+GSS is a nationally representative survey of US adults run by the 
+National Opinion Research Center at the University of Chicago. 
+Surveys are ran every one to two years dating back to 1972, with at least 
+1,500 respondents in every sample. 
 
-## View Data Visualizations
-https://jdonohue44.github.io/GeneralSocialSurveyVisualizations/
+We downloaded the GSS data using the R packages
+[gssr and gssrdoc](https://kjhealy.github.io/gssr/), built by kjhealy.
 
-## How to Make Changes
-1. Update or add file of interest.
-2. Render Book and verify that your change looks good on the rendered web page.
-3. Submit a pull request.
+## View the Report
+[https://jdonohue44.github.io/GeneralSocialSurveyVisualizations/](https://jdonohue44.github.io/GeneralSocialSurveyVisualizations/)

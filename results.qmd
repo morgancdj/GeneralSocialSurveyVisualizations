@@ -390,8 +390,8 @@ ggplot(cappun_summary, aes(x = year,
                            color = cappun)) +
   geom_area(alpha = 0.2, position = "identity") +
   geom_line() +
-  scale_fill_manual(values = c("Favor" = "gray10", "Oppose" = "gray90")) +
-  scale_color_manual(values = c("Favor" = "black", "Oppose" = "gray40")) +
+  scale_fill_manual(values = c("Favor" = "darkgray", "Oppose" = "#34968e")) +
+  scale_color_manual(values = c("Favor" = "black", "Oppose" = "#01665e")) +
   scale_y_continuous(labels = scales::percent) +
   theme_bw() +
   labs(
@@ -465,10 +465,9 @@ ggplot(cappun_data, aes(x = as.factor(year), fill = cappun)) +
   ) +
   theme_bw() +
   scale_x_discrete(breaks = function(x) x[seq(1, length(x), by = 4)]) +
-  scale_fill_brewer(palette = 'BrBG') +
+  scale_fill_manual(values = c("Favor" = "darkgray", "Oppose" = "#34968e")) +
   theme(
     axis.text.x = element_text(angle = 45, hjust = 1),
-    strip.background = element_rect(fill = "lightgray"),
     strip.text = element_text(face = "bold")
   )
 ```
@@ -501,7 +500,7 @@ relig_summary <- relig_summary |>
   mutate(relig = factor(relig, levels = correct_order))
 
 ggplot(relig_summary, aes(x = relig, y = proportion)) +
-  geom_bar(stat = "identity", fill = "gray40", width = 0.6) +
+  geom_bar(stat = "identity", fill = "darkgray", width = 0.6) +
   geom_text(aes(label = scales::percent(proportion, accuracy = 0.1)), 
             vjust = -0.5, size = 4) +
   scale_y_continuous(labels = scales::percent, limits = c(0, 1)) +
@@ -525,8 +524,8 @@ cappun_data <- gss_all |>
       "buddhism", "hinduism", "islam", "christian"))
   )
 
-cappun_summary <- cappun_data %>%
-  group_by(year, relig) %>%
+cappun_summary <- cappun_data |>
+  group_by(year, relig) |>
   summarize(
     total = n(),
     oppose = sum(cappun == "Oppose"),
@@ -539,6 +538,5 @@ cappun_summary <- cappun_data %>%
 # Round the percentage to two decimal places
 cappun_summary$pct_oppose <- round(cappun_summary$pct_oppose, 0)
 # write.csv(cappun_summary, './cappun_by_religion.csv')
-
 ```
 

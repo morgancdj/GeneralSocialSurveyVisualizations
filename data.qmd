@@ -8,11 +8,11 @@ The data will be retrieved from the General Social Survey (GSS), a nationally re
 
  * [About the GSS](https://gss.norc.org/us/en/gss/about-the-gss.html)
  * [In-browser data explorer for the GSS](https://gssdataexplorer.norc.org/)
- 
+ * The data is accessed through the `gssr` package
 
-## Data Cleaning
+## Data Cleaning on Key Variables
 
-Before we start data analysis, we first load the data and the variables we are interested in. The data can be easily accessed through the `gssr` package. We select the following demograhic variables for our analysis: 
+We select the following demographic variables for our analysis: 
 
 - `sex`
 
@@ -108,6 +108,7 @@ ggplot(NA_percentage_b |> mutate(reason = factor(reason, levels = inv$reason)), 
 
 
 ### Capital Punishment (cappun) missing row analysis
+The missing data analysis reveals that there are significant gaps in the information collected for this survey. The variable with the highest rate of missing values is religion, with 60.14% of responses lacking this data point. Region also has a high rate of missingness at 33.41%. Other variables with substantial missing information include degree (22.92% missing), sex (27.67% missing), and race (27.80% missing). The variable with the lowest rate of missing data is age, but even here 18.91% of responses are incomplete. These high levels of missingness across multiple key demographic variables could introduce bias and limit the conclusions that can be drawn from the analysis. It will be important to carefully consider how to address these gaps, whether through imputation techniques or by restricting the analysis to only complete cases, in order to obtain reliable insights from the Capital Punishment dataset.
 ```{r, message=FALSE, warning=FALSE}
 library(ggplot2)
 library(dplyr)

@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.353">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Opinions Over Time: Visualizing Survey Data from the General Social Survey (1972-2022) - 3&nbsp; Results</title>
+<title>3&nbsp; Results – Social Opinions Over Time: Visualizing Public Opinion on Abortion, Affirmative Action, and Capital Punishment from 1972-2022</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -81,7 +81,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -90,8 +96,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
@@ -104,12 +112,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./results.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Results</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./results.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Results</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -119,10 +127,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Opinions Over Time: Visualizing Survey Data from the General Social Survey (1972-2022)</a> 
+      <a href="./">Social Opinions Over Time: Visualizing Public Opinion on Abortion, Affirmative Action, and Capital Punishment from 1972-2022</a> 
         <div class="sidebar-tools-main">
     <a href="https://github.com/jdonohue44/GeneralSocialSurveyVisualizations" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
 </div>
@@ -168,7 +176,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -194,7 +202,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#how-does-support-for-capital-punishment-vary-by-race-and-religion" id="toc-how-does-support-for-capital-punishment-vary-by-race-and-religion" class="nav-link" data-scroll-target="#how-does-support-for-capital-punishment-vary-by-race-and-religion"><span class="header-section-number">3.3.2</span> How does support for capital punishment vary by race and religion?</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/jdonohue44/GeneralSocialSurveyVisualizations/edit/main/results.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/jdonohue44/GeneralSocialSurveyVisualizations/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/jdonohue44/GeneralSocialSurveyVisualizations/edit/main/results.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/jdonohue44/GeneralSocialSurveyVisualizations/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -214,14 +222,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
+
 </header>
+
 
 <section id="abortion" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="abortion"><span class="header-section-number">3.1</span> Abortion</h2>
 <section id="does-the-public-opinion-on-abortion-vary-based-on-the-reason-a-woman-is-seeking-abortion" class="level3" data-number="3.1.1">
 <h3 data-number="3.1.1" class="anchored" data-anchor-id="does-the-public-opinion-on-abortion-vary-based-on-the-reason-a-woman-is-seeking-abortion"><span class="header-section-number">3.1.1</span> Does the public opinion on abortion vary based on the reason a woman is seeking abortion ?</h3>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Transforming the data into long format</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>gss_abortion_reason_long_noNA <span class="ot">=</span> gss_ab_fct_noNA <span class="sc">|&gt;</span></span>
@@ -236,7 +246,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Public Opinions on Whether a Pregnant Woman Should Be Allowed to Obtain a Legal Abortion </span><span class="sc">\n</span><span class="st"> Categorized by Reason"</span>, <span class="at">y =</span> <span class="st">"Percentage of Respondents"</span>, <span class="at">x =</span> <span class="st">"Reason for Abortion"</span>) <span class="sc">+</span> <span class="fu">theme_bw</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust=</span><span class="fl">0.5</span>)) <span class="sc">+</span> <span class="fu">scale_fill_brewer</span>(<span class="at">name =</span> <span class="st">"Response"</span>, <span class="at">palette =</span> <span class="st">"Dark2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="results_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="960"></p>
+<div>
+<figure class="figure">
+<p><img src="results_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="960"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>We first seek to investigate whether the general public opinion on abortion varies based on the reason a woman seeks abortion. We include data from the entire period of 50 years (1977-2022). Note that the seven variables we choose represent the following reasons:</p>
@@ -255,7 +269,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="does-the-public-opinion-on-abortion-vary-across-time-how-does-it-vary-for-each-of-the-reasons-for-seeking-abortion" class="level3" data-number="3.1.2">
 <h3 data-number="3.1.2" class="anchored" data-anchor-id="does-the-public-opinion-on-abortion-vary-across-time-how-does-it-vary-for-each-of-the-reasons-for-seeking-abortion"><span class="header-section-number">3.1.2</span> Does the public opinion on abortion vary across time? How does it vary for each of the reasons for seeking abortion?</h3>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>gss_abortion_noNA <span class="ot">=</span> gss_abortion_reason_long_noNA <span class="sc">|&gt;</span> <span class="fu">group_by</span>(year, abortion_reason, response) <span class="sc">|&gt;</span> <span class="fu">summarize</span>(<span class="at">n=</span><span class="fu">n</span>()) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">prop =</span> n<span class="sc">/</span><span class="fu">sum</span>(n))</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -270,7 +284,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_brewer</span>(<span class="at">name =</span> <span class="st">"Abortion Reason"</span>, <span class="at">palette =</span> <span class="st">"Dark2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="results_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="960"></p>
+<div>
+<figure class="figure">
+<p><img src="results_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="960"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Since public opinion on abortion in the United States varies depending on the reason for seeking an abortion, as shown by data collected between 1977 and 2022, a natural follow-up question is whether these opinions have changed over time. To explore this, we examine shifts in public opinion for each reason for seeking abortion. Several interesting trends emerge. First, abortion when the mother’s health is at risk has consistently received overwhelming support since 1972, maintaining around 80% support throughout this period. This is the only category that shows no significant changes in support over time. For all other reasons, however, support has fluctuated: a decline in support occurred between 1985 and 1987, followed by an increase between 1990 and 1995, a decline between 1995 and 2005, a noticeable increase in 2010, and then a steady rise thereafter.</p>
@@ -283,7 +301,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>In this report, we focus on presenting graphs that highlight the most significant similarities and differences in responses regarding the legality of abortion across demographics. While we explored all the demographic categories outlined in the Data Cleaning section, we found that some groups in particular exhibited notable differences in opinion. However, upon further investigation, we found out that the results for some demographics might be misleading due to the small representation of certain groups in the survey. For example, when examining religious affiliations of respondents, we found that 82.68% of respondents identified as Christian, while only 2.08% were Jewish, 0.19% Muslim, and 0.15% Hindu. Between 1977 and 2022, only 15 Native Americans and 63 Hindus were surveyed. As such, we are unable to make meaningful comparisons within these religious groups as the sample size of certain groups in the survey is very small and therefore analysis of any trends can be misleading. A similar issue arose when analyzing responses based on the highest degree achieved and race. For example, we found that 81.16% of respondents are white, which means that the sample of respondents lacks in racial diversity. Additionally, note that the racial categories considered in the survey were limited to “White,” “Black,” and “Other,” which further constrains the analysis.</p>
 <p>With this being said, we found that different groups within the age and sex demographics do show similar trends across time in their support of abortion based on the different abortion reasons. These groups are also equally represented in the survey, which makes the analysis valid. Note that for the age demographic, each 5 year group represents 8-11% of the respondents, therefore the different age groups are equally represented. Then, for the sex demographic, around 44% are male and 55% are female. We present below the graph showing the percentage of each sex group in favor of abortion by abortion reason across time - the groups in this demographic show the most similarity in their trend of abortion support.</p>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>prc_dem_sex_noNA <span class="ot">=</span> gss_ab_fct_noNA <span class="sc">|&gt;</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>      <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(<span class="st">`</span><span class="at">mother's health</span><span class="st">`</span>,<span class="st">`</span><span class="at">rape</span><span class="st">`</span>,<span class="st">`</span><span class="at">birth defect</span><span class="st">`</span>,<span class="st">`</span><span class="at">financial hardship</span><span class="st">`</span>,<span class="st">`</span><span class="at">married-no more children</span><span class="st">`</span>,<span class="st">`</span><span class="at">not married</span><span class="st">`</span>, <span class="st">`</span><span class="at">any reason</span><span class="st">`</span>), </span>
@@ -299,13 +317,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>sex, <span class="at">ncol =</span> <span class="dv">1</span>) <span class="sc">+</span> <span class="fu">scale_fill_brewer</span>(<span class="at">name =</span> <span class="st">"Response"</span>, <span class="at">palette =</span> <span class="st">"Dark2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="results_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="1920"></p>
+<div>
+<figure class="figure">
+<p><img src="results_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="1920"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Interestingly, the two groups show similar patterns of abortion support over time across different reasons, which is somewhat unexpected, as one might assume that women, given that abortion directly affects them more than men, would show stronger support. However, between 2010 and 2015, men appear to show more support for abortion in cases where the pregnancy results from rape compared to women. Support for abortion when the mother’s health is at risk also seems to be slightly higher among men. Additionally, the “married but does not want more children” category shows slightly more support from men than women between 2005 and 2015.</p>
 <p>The demographic category that shows the most divergent trends is the one based on political and social views. The results here are not surprising, as we observe a clear upward trend in abortion support over time among the most liberal respondents, with high support for all abortion reasons. In contrast, conservatives show a downward trend in support over time, with much lower support for abortion except in cases of rape, the mother’s health, or fetal abnormalities. Moderates and those who identify as slightly conservative show relatively little variation in their views on abortion across time. Although each group in this demographic is well represented in the survey, only 3% of respondents identify as extremely liberal and 3% as extremely conservative (approximately 1,220 individuals in each group). We believe this low percentage reflects societal variation, and the sample size is sufficiently robust for analysis.</p>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>prc_dem_polviews_noNA <span class="ot">=</span> gss_ab_fct_noNA <span class="sc">|&gt;</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>      <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(<span class="st">`</span><span class="at">mother's health</span><span class="st">`</span>,<span class="st">`</span><span class="at">rape</span><span class="st">`</span>,<span class="st">`</span><span class="at">birth defect</span><span class="st">`</span>,<span class="st">`</span><span class="at">financial hardship</span><span class="st">`</span>,<span class="st">`</span><span class="at">married-no more children</span><span class="st">`</span>,<span class="st">`</span><span class="at">not married</span><span class="st">`</span>, <span class="st">`</span><span class="at">any reason</span><span class="st">`</span>), </span>
@@ -322,7 +344,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">name =</span> <span class="st">"Response"</span>, <span class="at">palette =</span> <span class="st">"Dark2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="results_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="1920"></p>
+<div>
+<figure class="figure">
+<p><img src="results_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="1920"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -330,7 +356,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="affirmative-action" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="affirmative-action"><span class="header-section-number">3.2</span> Affirmative Action</h2>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(gss_all)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>years <span class="ot">&lt;-</span> <span class="fu">gss_which_years</span>(gss_all, affrmact) <span class="sc">|&gt;</span> </span>
@@ -345,7 +371,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="does-the-public-opinion-on-affirmative-action-vary-consistently-by-region-over-time" class="level3" data-number="3.2.1">
 <h3 data-number="3.2.1" class="anchored" data-anchor-id="does-the-public-opinion-on-affirmative-action-vary-consistently-by-region-over-time"><span class="header-section-number">3.2.1</span> Does the public opinion on affirmative action vary consistently by region over time?</h3>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>year_averages <span class="ot">&lt;-</span> gss_d <span class="sc">|&gt;</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(<span class="fu">as.factor</span>(affrmact)), <span class="sc">!</span><span class="fu">is.na</span>(<span class="fu">as.factor</span>(discaff))) <span class="sc">|&gt;</span></span>
@@ -371,7 +397,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="results_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="results_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>We first examine whether there is consistent regional variation for support (lower-number responses on this scale) or opposition (higher-number responses on this scale) over the period of time that affirmative action has been on the GSS. Interestingly, the only pattern that really stands out is that the northeast has been generally more likely to support affirmative action over the time where the question was asked, while other regions have oscillated in their relative positions over time. This is perhaps indicative that political divisions on this issue are less regionally varied than the standard political assumptions that political analysts tend to make.</p>
@@ -379,7 +409,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="do-views-on-affirmative-action-vary-with-political-views" class="level3" data-number="3.2.2">
 <h3 data-number="3.2.2" class="anchored" data-anchor-id="do-views-on-affirmative-action-vary-with-political-views"><span class="header-section-number">3.2.2</span> Do views on affirmative action vary with political views?</h3>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>year_averages_pol <span class="ot">&lt;-</span> gss_d <span class="sc">|&gt;</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(<span class="fu">as.factor</span>(affrmact)), <span class="sc">!</span><span class="fu">is.na</span>(<span class="fu">as.factor</span>(discaff)), <span class="sc">!</span><span class="fu">is.na</span>(<span class="fu">as.factor</span>(polviews))) <span class="sc">|&gt;</span></span>
@@ -396,7 +426,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>c</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="results_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="results_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Here, we can see a clear correlation between support for affirmative action and the belief that it does not harm white people when implemented, as one might expect. Each point is a single year’s sample, split between the options for self-described political views provided by the GSS, taking the average of responses to those variables. Interestingly, it is not a particularly tight correlation, with a fairly wide spread in the relationship between the two variables, although there is evident clustering on the political view scale, with people who have similar political views having fairly similar views on affirmative action. However, that clustering has a lot of overlap, and could not be derived without knowing the respondents’ self-identified political views. In fact, we can see overlap of groups as disparate as “moderate” and “extremely conservative”, though we do not see as much overlap between groups on the liberal side of the spectrum.</p>
@@ -404,7 +438,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="variation-in-opinions-across-generations" class="level3" data-number="3.2.3">
 <h3 data-number="3.2.3" class="anchored" data-anchor-id="variation-in-opinions-across-generations"><span class="header-section-number">3.2.3</span> Variation in opinions across generations</h3>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a> year_averages_by <span class="ot">&lt;-</span> gss_d <span class="sc">|&gt;</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(<span class="fu">as.factor</span>(affrmact)), <span class="sc">!</span><span class="fu">is.na</span>(<span class="fu">as.factor</span>(age))) <span class="sc">|&gt;</span></span>
@@ -419,7 +453,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>d</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="results_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="results_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>In this chart, we calculate the approximate birth year of respondents based on their age at the time of the survey. We can see that as pepole get younger, they are significantly more likely to favor affirmative action, though no group ever reached a majority in favor until very recently - and either tail end should be taken as likely very distorted due to a smaller sample size. The main feature evident here is that over time, the proportion of respondents answering “strongly favors” is mainly what has increased, with the “strongly opposes” decreasing, while the less-extreme views essentially stay consistent in their proportions.</p>
@@ -427,7 +465,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="do-opinions-on-affirmative-action-vary-with-employment-status" class="level3" data-number="3.2.4">
 <h3 data-number="3.2.4" class="anchored" data-anchor-id="do-opinions-on-affirmative-action-vary-with-employment-status"><span class="header-section-number">3.2.4</span> Do opinions on affirmative action vary with employment status?</h3>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> gss_d <span class="sc">|&gt;</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(<span class="fu">as.factor</span>(affrmact)), <span class="sc">!</span><span class="fu">is.na</span>(<span class="fu">as.factor</span>(wrkstat))) <span class="sc">|&gt;</span></span>
@@ -452,7 +490,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="results_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="960"></p>
+<div>
+<figure class="figure">
+<p><img src="results_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="960"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Political scientists often hypothesize that economic circumstances are correlated with beliefs about racial resentment, so we will break the responses over time down by employment status. As with other trends, we do see decreasing opposition to affirmative action for most groups, though the steepest decrease occurs with respondents currently in school. Interestingly, the unemployed also have a fairly large change over time, moreso than the currently-employed, while retired people and people who choose not to be employed in order to stay at home show less distinct changes in their opinions, but still broadly follow the same trends. However, generally, we see that both the unemployed and employed have similar feelings about affirmative action as each other over time</p>
@@ -464,7 +506,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 data-number="3.3.1" class="anchored" data-anchor-id="declining-support-for-capital-punishment-over-the-past-50-years"><span class="header-section-number">3.3.1</span> Declining support for capital punishment over the past 50 years</h3>
 <p>The decline in support for capital punishment beginning in the 1990s is likely attributed to multiple factors. Some of these include growing awareness of wrongful convictions highlighted by DNA exoneration, concerns about racial disparities in sentencing, and shifting moral perspectives on state-sanctioned executions. Additionally, declining crime rates in the late 1990s and 2000s may have reduced public demand for harsh punishments. The emergence of life without parole as an alternative sentence and increased focus on the high costs of death penalty cases also likely contributed to this trend. While no single factor can be pinpointed as the sole cause, this combination of legal, social, and economic considerations has likely shaped public opinion over time.</p>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>cappun_data <span class="ot">&lt;-</span> gss_all <span class="sc">|&gt;</span> </span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(year, cappun) <span class="sc">|&gt;</span> </span>
@@ -484,8 +526,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>                           <span class="at">color =</span> cappun)) <span class="sc">+</span></span>
 <span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_area</span>(<span class="at">alpha =</span> <span class="fl">0.2</span>, <span class="at">position =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
 <span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Favor"</span> <span class="ot">=</span> <span class="st">"gray10"</span>, <span class="st">"Oppose"</span> <span class="ot">=</span> <span class="st">"gray90"</span>)) <span class="sc">+</span></span>
-<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Favor"</span> <span class="ot">=</span> <span class="st">"black"</span>, <span class="st">"Oppose"</span> <span class="ot">=</span> <span class="st">"gray40"</span>)) <span class="sc">+</span></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Favor"</span> <span class="ot">=</span> <span class="st">"darkgray"</span>, <span class="st">"Oppose"</span> <span class="ot">=</span> <span class="st">"#34968e"</span>)) <span class="sc">+</span></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Favor"</span> <span class="ot">=</span> <span class="st">"black"</span>, <span class="st">"Oppose"</span> <span class="ot">=</span> <span class="st">"#01665e"</span>)) <span class="sc">+</span></span>
 <span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>percent) <span class="sc">+</span></span>
 <span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
 <span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
@@ -530,7 +572,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb10-62"><a href="#cb10-62" aria-hidden="true" tabindex="-1"></a>           <span class="at">fontface =</span> <span class="st">"italic"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="results_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="results_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -540,7 +586,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 data-number="3.3.2.1" class="anchored" data-anchor-id="race"><span class="header-section-number">3.3.2.1</span> Race</h4>
 <p>The racial disparity in support for capital punishment, with Black people opposing it more than White people, reflects complex historical and societal factors. This difference likely stems from the Black community’s experiences with systemic racism in the criminal justice system, including higher rates of wrongful convictions and disproportionate application of the death penalty. Black Americans may view capital punishment as an extension of historical injustices, from slavery to lynchings, leading to a deeper skepticism of the state’s power over life and death. Conversely, White Americans, generally experiencing more favorable treatment in the justice system, may be more likely to trust its processes and view capital punishment as a legitimate form of justice. This racial divide underscores how personal and communal experiences with law enforcement and the broader criminal justice system can profoundly shape perspectives on punitive measures like the death penalty.</p>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>cappun_data <span class="ot">&lt;-</span> gss_all <span class="sc">|&gt;</span> </span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(year, race, cappun) <span class="sc">|&gt;</span></span>
@@ -564,15 +610,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
 <span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
 <span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">breaks =</span> <span class="cf">function</span>(x) x[<span class="fu">seq</span>(<span class="dv">1</span>, <span class="fu">length</span>(x), <span class="at">by =</span> <span class="dv">4</span>)]) <span class="sc">+</span></span>
-<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">'BrBG'</span>) <span class="sc">+</span></span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Favor"</span> <span class="ot">=</span> <span class="st">"darkgray"</span>, <span class="st">"Oppose"</span> <span class="ot">=</span> <span class="st">"#34968e"</span>)) <span class="sc">+</span></span>
 <span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
 <span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>),</span>
-<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">strip.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"lightgray"</span>),</span>
-<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">strip.text =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>)</span>
-<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">strip.text =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>)</span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="results_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="results_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -580,7 +629,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 data-number="3.3.2.2" class="anchored" data-anchor-id="religion"><span class="header-section-number">3.3.2.2</span> Religion</h4>
 <p>Religious views on capital punishment often reflect beliefs about the afterlife and moral justice. Protestant and Catholic traditions, showing higher support, may emphasize divine judgment and the concept of earthly consequences for actions. Eastern religions like Buddhism and Hinduism, with lower support, tend to view life as cyclical and interconnected, focusing on karma and reincarnation rather than final judgment. This perspective may lead to a greater emphasis on rehabilitation and the sanctity of all life. The varying levels of support across religions highlight how different conceptions of the soul, divine justice, and the nature of existence can significantly influence attitudes towards punitive measures in this life.</p>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>cappun_data <span class="ot">&lt;-</span> gss_all <span class="sc">|&gt;</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(year, sex, relig, degree, cappun) <span class="sc">|&gt;</span></span>
@@ -606,7 +655,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">relig =</span> <span class="fu">factor</span>(relig, <span class="at">levels =</span> correct_order))</span>
 <span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(relig_summary, <span class="fu">aes</span>(<span class="at">x =</span> relig, <span class="at">y =</span> proportion)) <span class="sc">+</span></span>
-<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">fill =</span> <span class="st">"gray40"</span>, <span class="at">width =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">fill =</span> <span class="st">"darkgray"</span>, <span class="at">width =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
 <span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> scales<span class="sc">::</span><span class="fu">percent</span>(proportion, <span class="at">accuracy =</span> <span class="fl">0.1</span>)), </span>
 <span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>            <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
 <span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>percent, <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>)) <span class="sc">+</span></span>
@@ -616,7 +665,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="results_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="results_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 
@@ -661,18 +714,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -704,11 +746,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -718,8 +799,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -731,7 +821,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -775,6 +988,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -800,6 +1014,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -861,12 +1101,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./data.html" class="pagination-link">
+      <a href="./data.html" class="pagination-link" aria-label="Data">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./d3graph.html" class="pagination-link">
+      <a href="./d3graph.html" class="pagination-link" aria-label="Interactive graph">
         <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Interactive graph</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -879,10 +1119,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>   
     <div class="nav-footer-center">
       &nbsp;
-    </div>
-    <div class="nav-footer-right">This book was built with <a href="https://quarto.org/">Quarto</a>.</div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/jdonohue44/GeneralSocialSurveyVisualizations/edit/main/results.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/jdonohue44/GeneralSocialSurveyVisualizations/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>This book was built with <a href="https://quarto.org/">Quarto</a>.</p>
+</div>
   </div>
 </footer>
+
 
 
 

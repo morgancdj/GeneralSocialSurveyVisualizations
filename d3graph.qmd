@@ -69,8 +69,8 @@
   }
 </style>
 
-<title>Capital Punishment Opposition by Religion: 1972-2022</title>
-<h1>Capital Punishment Opposition by Religion: 1972-2022</h1>
+<title>Capital Punishment Opposition by Religious Affiliation: 1972-2022</title>
+<h1>Capital Punishment Opposition by Religious Affiliation: 1972-2022</h1>
 
 <div id="chart"></div>
 <div id="controls">
