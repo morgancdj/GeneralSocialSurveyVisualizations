@@ -57,11 +57,9 @@ Above, we can see a quick visualization of the primary variables - both dependen
 
 ### Abortion: Missing Variables
 
+In our analysis of public opinion on abortion using the GSS data, we initially noticed a significant increase in the proportion of missing (NA) responses on abortion-related variables in some years, which led to suspicious decreases in the percentage of respondents in favor of abortion. Upon further investigation, we found that the missing responses were predominantly categorized as "NA(i)" (inapplicable), with only a small percentage of "NA(d)" (don't know) responses, which would be expected in a survey of this nature. This is the result of the survey-ballot method behind the GSS, where not all questions are asked to all survey participants. Additionally, we decided to remove the other NA values at this time, as the other responses made up a very small proportion of answers. This decision was crucial, as including these NAs distorted the true proportions of "yes" and "no" responses, leading to potentially misleading conclusions about trends in abortion attitudes over time.
 
-In our analysis of public opinion on abortion using the GSS data, we initially noticed a significant increase in the proportion of missing (NA) responses on abortion-related variables in some years, which led to suspicious decreases in the percentage of respondents in favor of abortion. Upon further investigation, we found that the missing responses were predominantly categorized as "NA(i)" (inapplicable), with only a small percentage of "NA(d)" (don't know) responses, which would be expected in a survey of this nature. This observation regarding how missing data was encoded raised concerns, as it suggested that all forms of missing data, whether due to uncertainty or irrelevance, were grouped into a single "inapplicable" category. This approach rendered the NA category essentially meaningless for our analysis, as it no longer provided any insight into uncertainty or indecision. Since the inapplicable responses could not provide meaningful insights into people's views on abortion, we decided to remove them from our analysis. This decision was crucial, as including these NAs distorted the true proportions of "yes" and "no" responses, leading to potentially misleading conclusions about trends in abortion attitudes over time.
-
-Below is a graph showing the percentage of missing values in each of the abortion-related variables we investigate in our analysis. Note that all the variables have a high percentage of missing values around 45% for "abortion for any reason" and around 35% for all other variables. Additionally, note that most of the missing values are inapplicable responses with over 90% of all missing values being inapplicable responses.
-
+Below is a graph showing the percentage of missing values in each of the abortion-related variables we investigate in our analysis. Note that all the variables have a high percentage of missing values around 45% for "abortion for any reason" and around 35% for all other variables, as not all variables were included on all slates. Additionally, note that most of the missing values are inapplicable responses with over 90% of all missing values being inapplicable responses.
 
 ```{r, warning = FALSE, message = FALSE, fig.height = 10, fig.width = 10}
 gss_ab = gss_all |>
@@ -105,7 +103,22 @@ ggplot(NA_percentage_b |> mutate(reason = factor(reason, levels = inv$reason)), 
   theme_bw()
 
 ```
+### Affirmative Action: Missing Values
+```{r}
+gss_ad <- gss_all |> 
+  select(discaff, affrmact)
 
+ggplot(gss_ad, aes(y = haven::as_factor(discaff))) + 
+  geom_bar() + 
+  ggtitle("Value Breakdown of discaff variable")
+```
+
+```{r}
+ggplot(gss_ad, aes(y = haven::as_factor(affrmact))) + 
+  geom_bar() + 
+  ggtitle("Value Breakdown of affrmact variable")
+```
+Similar to the abortion questions, as there are several possible slates of questions asked to respondents, not all survey participants are asked all questions. We will therefore discard the inapplicable answers (`iap`), as they did not participate in these questions; and the "don't know" values make up a small enough proportion of responses to be irrelevant to analyses.
 
 ### Capital Punishment (cappun) missing row analysis
 The missing data analysis reveals that there are significant gaps in the information collected for this survey. The variable with the highest rate of missing values is religion, with 60.14% of responses lacking this data point. Region also has a high rate of missingness at 33.41%. Other variables with substantial missing information include degree (22.92% missing), sex (27.67% missing), and race (27.80% missing). The variable with the lowest rate of missing data is age, but even here 18.91% of responses are incomplete. These high levels of missingness across multiple key demographic variables could introduce bias and limit the conclusions that can be drawn from the analysis. It will be important to carefully consider how to address these gaps, whether through imputation techniques or by restricting the analysis to only complete cases, in order to obtain reliable insights from the Capital Punishment dataset.
