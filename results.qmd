@@ -8,6 +8,10 @@ library(dplyr)
 library(tidyr)
 library(ggplot2)
 library(gssr)
+library(forcats)
+library(RColorBrewer)
+library(tidyverse)
+library(scales)
 
 # Loading the data
 data(gss_all)
@@ -158,7 +162,7 @@ gss_abortion_reason_long_noNA = gss_ab_fct_noNA |>
 # Stacked bar chart to show the responses of respondents on whether a woman should be able to legally obtain an abortion based on the reason for seeking abortion
 ggplot(gss_abortion_reason_long_noNA |> filter(!is.na(response)), aes(x=abortion_reason, fill= response))+
   geom_bar(position="fill") + 
-  labs(title = "Public Opinions on Whether a Pregnant Woman Should Be Allowed to Obtain a Legal Abortion \n Categorized by Reason", y = "Percentage of Respondents", x = "Reason for Abortion", fill = "Response") + theme_bw() + theme(plot.title = element_text(hjust=0.5))
+  labs(title = "Public Opinions on Whether a Pregnant Woman Should Be Allowed to Obtain a Legal Abortion \n Categorized by Reason", y = "Percentage of Respondents", x = "Reason for Abortion") + theme_bw() + theme(plot.title = element_text(hjust=0.5)) + scale_fill_brewer(name = "Response", palette = "Dark2")
 ```
 
 We first seek to investigate whether the general public opinion on abortion varies based on the reason a woman seeks abortion. We include data from the entire period of 50 years (1977-2022). Note that the seven variables we choose represent the following reasons:
@@ -193,10 +197,11 @@ gss_abortion_noNA = gss_abortion_reason_long_noNA |> group_by(year, abortion_rea
 ggplot(gss_abortion_noNA |> filter(response == "yes" ), aes(x=year, y=prop, color = abortion_reason, na.rm=TRUE)) +
   geom_point(size = 0.9,color = "black") +
   geom_line() +
-  labs (x = "Year", y = "Proportion of Positive Responses", title = "Percentage of Respondents In Favor of Abortion Categorized \n  by Reason across Time (1972-2022)", color = "Abortion Reason") + theme_bw() +
+  labs (x = "Year", y = "Proportion of Positive Responses", title = "Percentage of Respondents In Favor of Abortion Categorized \n  by Reason across Time (1972-2022)") + theme_bw() +
   scale_x_continuous(n.breaks = 14) +
   scale_y_continuous() + 
-  theme(plot.title = element_text(hjust=0.5))
+  theme(plot.title = element_text(hjust=0.5)) + 
+  scale_color_brewer(name = "Abortion Reason", palette = "Dark2")
 ```
 
 Since public opinion on abortion in the United States varies depending on the reason for seeking an abortion, as shown by data collected between 1977 and 2022, a natural follow-up question is whether these opinions have changed over time. To explore this, we examine shifts in public opinion for each reason for seeking abortion. Several interesting trends emerge. First, abortion when the mother's health is at risk has consistently received overwhelming support since 1972, maintaining around 80% support throughout this period. This is the only category that shows no significant changes in support over time. For all other reasons, however, support has fluctuated: a decline in support occurred between 1985 and 1987, followed by an increase between 1990 and 1995, a decline between 1995 and 2005, a noticeable increase in 2010, and then a steady rise thereafter.
@@ -225,10 +230,10 @@ prc_dem_sex_noNA = gss_ab_fct_noNA |>
 ggplot(prc_dem_sex_noNA |> filter(response == "yes", sex != is.na(sex)), aes(x=year, y=prop, color = abortion_reason)) +
   geom_point(size = 0.9,color = "black") +
   geom_line() +
-  labs (x = "Year", y = "Proportion of Positive Responses", title = "Change in Percentage of Repondents In Favor of Abortion by Demographic (Sex) Group Across Time (1972-2022)", color = "Abortion Reason") + theme_bw(19) +
+  labs (x = "Year", y = "Proportion of Positive Responses", title = "Change in Percentage of Repondents In Favor of Abortion by Demographic (Sex) Group Across Time (1972-2022)") + theme_bw(19) +
   scale_x_continuous(n.breaks = 14) +
   scale_y_continuous() +
-  facet_wrap(~sex, ncol = 1)
+  facet_wrap(~sex, ncol = 1) + scale_fill_brewer(name = "Response", palette = "Dark2")
 ```
 
 
@@ -246,18 +251,17 @@ prc_dem_polviews_noNA = gss_ab_fct_noNA |>
 ggplot(prc_dem_polviews_noNA |> filter(response == "yes"), aes(x=year, y=prop, color = abortion_reason)) +
   geom_point(size = 0.9,color = "black") +
   geom_line() +
-  labs (x = "Year", y = "Proportion of Positive Responses", title = "Change in Percentage of Repondents In Favor of Abortion by Demographic (Social/Political Belief) Group Across Time (1972-2022)", color = "Abortion Reason") + theme_bw(19) +
+  labs (x = "Year", y = "Proportion of Positive Responses", title = "Change in Percentage of Repondents In Favor of Abortion by Demographic (Social/Political Belief) Group Across Time (1972-2022)") + theme_bw(19) +
   scale_x_continuous(n.breaks = 14) +
   scale_y_continuous() +
-  facet_wrap(~polviews, ncol = 2)
+  facet_wrap(~polviews, ncol = 2) + 
+  scale_fill_brewer(name = "Response", palette = "Dark2")
 
 ```
 
 ## Affirmative Action
 
 ```{r, message=FALSE, warning=FALSE}
-library(gssr)
-library(dplyr)
 
 data(gss_all)
 years <- gss_which_years(gss_all, affrmact) |> 
@@ -272,7 +276,7 @@ In 1994, the General Social Survey began collecting data on public support or op
 ### Does the public opinion on affirmative action vary consistently by region over time?
 
 ```{r, message=FALSE, warning=FALSE}
-library(forcats)
+
 year_averages <- gss_d |>
   filter(!is.na(as.factor(affrmact)), !is.na(as.factor(discaff))) |>
   mutate(region_recode = fct_recode(haven::as_factor(region), 
@@ -292,7 +296,7 @@ b <- ggplot(year_averages, aes(x = year, y = affrmact_avg, color = region_recode
   scale_color_discrete(name = "region") +
   theme_bw(12) + 
   labs(y = "Average Support to Opposition on a 1-4 scale") +
-  scale_color_brewer(palette="Set1", name = "Region") + 
+  scale_color_brewer(palette="Dark2", name = "Region") + 
   ggtitle("Regional Opinions on Affirmative Action Over Time")
 b
 ```
@@ -305,12 +309,12 @@ year_averages_pol <- gss_d |>
   group_by(year, polviews) |>
   summarize(affrmact_avg = mean(affrmact), discaff_avg = mean(discaff))
 
-c <- ggplot(year_averages_pol, aes(x = affrmact_avg, y = discaff_avg, color= haven::as_factor(polviews))) + 
+c <- ggplot(year_averages_pol, aes(x = affrmact_avg, y = discaff_avg, color= fct_recode(haven::as_factor(polviews), "moderate" = "moderate, middle of the road"))) + 
   geom_point(size = 3) + 
   labs(x = "Average Support to Opposition for Affirmative Action on a 1-4 scale",
        y = "Average Belief that Affirmative Action Does Not Harm White People on a 1-3 scale") + 
-  ggtitle("Correlation between different views on Affirmative Action, by Political Leaning") + 
-  scale_color_brewer(palette = "Dark2", name = "Political Views") + 
+  ggtitle("Correlatiing views on Affirmative Action, by Political Leaning") + 
+  scale_color_brewer(palette = "BrBG", name = "Political Views") + 
   theme_bw(12)
 c
 ```
@@ -325,7 +329,7 @@ Here, we can see a clear correlation between support for affirmative action and 
 d <- ggplot(year_averages_by, aes(x=birthyear, fill=haven::as_factor(affrmact))) +
   geom_bar(position="fill") + 
   theme_bw(12) + 
-  scale_fill_brewer(palette = "Set1", name = "Opinion on Affirmative Action") + 
+  scale_fill_brewer(palette = "BrBG", name = "Opinion on Affirmative Action") + 
   labs(y = "Proportion of population", x = "Birth Year") + 
   ggtitle("Distribution of Opinions on Affirmative Action by Birth Year")
 d
@@ -352,7 +356,7 @@ a <- gss_d |>
   geom_point(size = 0.9, color = 'black') + 
   geom_line() +
   facet_wrap(~worknew, ncol=1) + 
-  scale_color_brewer(name = "Opinion on Affirmative Action", palette = "Set1") + 
+  scale_color_brewer(name = "Opinion on Affirmative Action", palette = "BrBG") + 
   labs(x = "Proportion of respondents") + 
   ggtitle("Variation of Viewpoints on Affirmative Action over time, by Employment Status") + 
   theme_bw(12)
@@ -363,18 +367,10 @@ Political scientists often hypothesize that economic circumstances are correlate
 
 ## Capital Punishment
 
-```{r, message=FALSE, warning=FALSE}
-library(gssr)
-data(gss_all)
-```
-
 ### Declining support for capital punishment over the past 50 years
 The decline in support for capital punishment beginning in the 1990s is likely attributed to multiple factors. Some of these include growing awareness of wrongful convictions highlighted by DNA exoneration, concerns about racial disparities in sentencing, and shifting moral perspectives on state-sanctioned executions. Additionally, declining crime rates in the late 1990s and 2000s may have reduced public demand for harsh punishments. The emergence of life without parole as an alternative sentence and increased focus on the high costs of death penalty cases also likely contributed to this trend. While no single factor can be pinpointed as the sole cause, this combination of legal, social, and economic considerations has likely shaped public opinion over time.
 
 ```{r, message=FALSE, warning=FALSE}
-library(tidyverse)
-library(ggplot2)
-library(scales)
 
 cappun_data <- gss_all |> 
   select(year, cappun) |> 
@@ -407,10 +403,10 @@ ggplot(cappun_summary, aes(x = year,
   ) +
   theme(
     plot.title = element_text(face = "bold", size = 16),
-    plot.subtitle = element_text(color = "gray50"),
+    plot.subtitle = element_text(color = "#be802f"),
     legend.position = "bottom",
     panel.grid.minor = element_blank(),
-    panel.grid.major = element_line(color = "gray90", linetype = "dotted")
+    panel.grid.major = element_line(color = "#34968e", linetype = "dotted")
   ) +
   geom_vline(xintercept = 1985, 
              linetype = "dashed",
@@ -436,7 +432,8 @@ ggplot(cappun_summary, aes(x = year,
              color = "gray40") +
   annotate("text", x = 2019, y = 0.50, 
            label = "Low \n(56% Favor)", 
-           color = "gray40")
+           color = "gray40",
+           fontface = "italic")
 
 ```
 
@@ -445,8 +442,6 @@ ggplot(cappun_summary, aes(x = year,
 #### Race
 The racial disparity in support for capital punishment, with Black people opposing it more than White people, reflects complex historical and societal factors. This difference likely stems from the Black community's experiences with systemic racism in the criminal justice system, including higher rates of wrongful convictions and disproportionate application of the death penalty. Black Americans may view capital punishment as an extension of historical injustices, from slavery to lynchings, leading to a deeper skepticism of the state's power over life and death. Conversely, White Americans, generally experiencing more favorable treatment in the justice system, may be more likely to trust its processes and view capital punishment as a legitimate form of justice. This racial divide underscores how personal and communal experiences with law enforcement and the broader criminal justice system can profoundly shape perspectives on punitive measures like the death penalty.
 ```{r}
-library(dplyr)
-library(ggplot2)
 
 cappun_data <- gss_all |> 
   select(year, race, cappun) |>
@@ -470,7 +465,7 @@ ggplot(cappun_data, aes(x = as.factor(year), fill = cappun)) +
   ) +
   theme_bw() +
   scale_x_discrete(breaks = function(x) x[seq(1, length(x), by = 4)]) +
-  scale_fill_brewer(palette = 'Greys') +
+  scale_fill_brewer(palette = 'BrBG') +
   theme(
     axis.text.x = element_text(angle = 45, hjust = 1),
     strip.background = element_rect(fill = "lightgray"),
@@ -481,10 +476,6 @@ ggplot(cappun_data, aes(x = as.factor(year), fill = cappun)) +
 #### Religion
 Religious views on capital punishment often reflect beliefs about the afterlife and moral justice. Protestant and Catholic traditions, showing higher support, may emphasize divine judgment and the concept of earthly consequences for actions. Eastern religions like Buddhism and Hinduism, with lower support, tend to view life as cyclical and interconnected, focusing on karma and reincarnation rather than final judgment. This perspective may lead to a greater emphasis on rehabilitation and the sanctity of all life. The varying levels of support across religions highlight how different conceptions of the soul, divine justice, and the nature of existence can significantly influence attitudes towards punitive measures in this life.
 ```{r, message=FALSE, warning=FALSE}
-library(ggplot2)
-library(dplyr)
-library(tidyverse)
-library(forcats)
 
 cappun_data <- gss_all |>
   select(year, sex, relig, degree, cappun) |>
