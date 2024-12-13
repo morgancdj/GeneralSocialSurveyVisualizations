@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>2&nbsp; Data – Opinions Over Time: Visualizing Survey Data from the General Social Survey (1972-2022)</title>
+<title>2&nbsp; Data – Social Opinions Over Time: Visualizing Public Opinion on Abortion, Affirmative Action, and Capital Punishment from 1972-2022</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -130,7 +130,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Opinions Over Time: Visualizing Survey Data from the General Social Survey (1972-2022)</a> 
+      <a href="./">Social Opinions Over Time: Visualizing Public Opinion on Abortion, Affirmative Action, and Capital Punishment from 1972-2022</a> 
         <div class="sidebar-tools-main">
     <a href="https://github.com/jdonohue44/GeneralSocialSurveyVisualizations" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
 </div>
@@ -187,7 +187,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#data-sources" id="toc-data-sources" class="nav-link" data-scroll-target="#data-sources"><span class="header-section-number">2.1.1</span> Data Sources</a></li>
   </ul></li>
-  <li><a href="#data-cleaning" id="toc-data-cleaning" class="nav-link" data-scroll-target="#data-cleaning"><span class="header-section-number">2.2</span> Data Cleaning</a></li>
+  <li><a href="#data-cleaning-on-key-variables" id="toc-data-cleaning-on-key-variables" class="nav-link" data-scroll-target="#data-cleaning-on-key-variables"><span class="header-section-number">2.2</span> Data Cleaning on Key Variables</a></li>
   <li><a href="#missing-value-analysis" id="toc-missing-value-analysis" class="nav-link" data-scroll-target="#missing-value-analysis"><span class="header-section-number">2.3</span> Missing value analysis</a>
   <ul class="collapse">
   <li><a href="#overall" id="toc-overall" class="nav-link" data-scroll-target="#overall"><span class="header-section-number">2.3.1</span> Overall</a></li>
@@ -226,12 +226,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li><a href="https://gss.norc.org/us/en/gss/about-the-gss.html">About the GSS</a></li>
 <li><a href="https://gssdataexplorer.norc.org/">In-browser data explorer for the GSS</a></li>
+<li>The data is accessed through the <code>gssr</code> package</li>
 </ul>
 </section>
 </section>
-<section id="data-cleaning" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="data-cleaning"><span class="header-section-number">2.2</span> Data Cleaning</h2>
-<p>Before we start data analysis, we first load the data and the variables we are interested in. The data can be easily accessed through the <code>gssr</code> package. We select the following demograhic variables for our analysis:</p>
+<section id="data-cleaning-on-key-variables" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="data-cleaning-on-key-variables"><span class="header-section-number">2.2</span> Data Cleaning on Key Variables</h2>
+<p>We select the following demographic variables for our analysis:</p>
 <ul>
 <li><p>sex</p></li>
 <li><p>age</p></li>
@@ -247,9 +248,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>reg: region of interview</p></li>
 </ul>
 <p>We select specific abortion, affirmative action, and capital punishment variables. With regards to abortion, we choose seven abortion variables each representing a different reason a woman could be seeking an abortion and respondents’ opinion (Yes, No, NA) on whether a woman should be able to obtain a legal abortion for such a reason.</p>
-<p>For affirmative action, we look at …………..</p>
-<p>For capital punishment, we look at …………</p>
-<p>We clean and transform the data by mutating categorical variables into factors with meaningful labels. We also remove the rows with NA values in the abortion-related columns. This is because we discovered through data exploration that the NA values pertaining to these variables represent inapplicable responses. Therefore, we remove these rows to ensure that we only use relevant and complete data for further analysis. <em>Anything similar for aff action and cappun</em></p>
+<p>We clean and transform the data by mutating categorical variables into factors with meaningful labels. We also remove the rows with NA values in the abortion-related columns. This is because we discovered through data exploration that the NA values pertaining to these variables represent inapplicable responses. Therefore, we remove these rows to ensure that we only use relevant and complete data for further analysis.</p>
 </section>
 <section id="missing-value-analysis" class="level2" data-number="2.3">
 <h2 data-number="2.3" class="anchored" data-anchor-id="missing-value-analysis"><span class="header-section-number">2.3</span> Missing value analysis</h2>
