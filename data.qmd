@@ -63,7 +63,7 @@ In our analysis of public opinion on abortion using the GSS data, we initially n
 Below is a graph showing the percentage of missing values in each of the abortion-related variables we investigate in our analysis. Note that all the variables have a high percentage of missing values around 45% for "abortion for any reason" and around 35% for all other variables. Additionally, note that most of the missing values are inapplicable responses with over 90% of all missing values being inapplicable responses.
 
 
-```{r, warning = False, message = False, fig.height = 10, fig.width = 10}
+```{r, warning = FALSE, message = FALSE, fig.height = 10, fig.width = 10}
 gss_ab = gss_all |>
   select(c(year, abdefect, abnomore, abhlth, abpoor, abrape, absingle, abany, sex, age, race, degree, relig, relig16, marital, partyid, polviews, childs, region, reg16))
 

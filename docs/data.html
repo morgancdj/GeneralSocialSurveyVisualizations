@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.3.353">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>2&nbsp; Data – Opinions Over Time: Visualizing Survey Data from the General Social Survey (1972-2022)</title>
+<title>Opinions Over Time: Visualizing Survey Data from the General Social Survey (1972-2022) - 2&nbsp; Data</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -81,13 +81,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
+  "limit": 20,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -96,10 +90,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
-    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+    "search-submit-button-title": "Submit"
   }
 }</script>
 
@@ -112,12 +104,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -127,7 +119,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Opinions Over Time: Visualizing Survey Data from the General Social Survey (1972-2022)</a> 
@@ -176,7 +168,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -191,10 +183,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#missing-value-analysis" id="toc-missing-value-analysis" class="nav-link" data-scroll-target="#missing-value-analysis"><span class="header-section-number">2.3</span> Missing value analysis</a>
   <ul class="collapse">
   <li><a href="#overall" id="toc-overall" class="nav-link" data-scroll-target="#overall"><span class="header-section-number">2.3.1</span> Overall</a></li>
-  <li><a href="#capital-punishment-cappun-missing-row-analysis" id="toc-capital-punishment-cappun-missing-row-analysis" class="nav-link" data-scroll-target="#capital-punishment-cappun-missing-row-analysis"><span class="header-section-number">2.3.2</span> Capital Punishment (cappun) missing row analysis</a></li>
+  <li><a href="#abortion-missing-variables" id="toc-abortion-missing-variables" class="nav-link" data-scroll-target="#abortion-missing-variables"><span class="header-section-number">2.3.2</span> Abortion: Missing Variables</a></li>
+  <li><a href="#capital-punishment-cappun-missing-row-analysis" id="toc-capital-punishment-cappun-missing-row-analysis" class="nav-link" data-scroll-target="#capital-punishment-cappun-missing-row-analysis"><span class="header-section-number">2.3.3</span> Capital Punishment (cappun) missing row analysis</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/jdonohue44/GeneralSocialSurveyVisualizations/edit/main/data.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/jdonohue44/GeneralSocialSurveyVisualizations/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/jdonohue44/GeneralSocialSurveyVisualizations/edit/main/data.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/jdonohue44/GeneralSocialSurveyVisualizations/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -214,9 +207,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
-
 </header>
-
 
 <section id="technical-description" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="technical-description"><span class="header-section-number">2.1</span> Technical Description</h2>
@@ -233,128 +224,165 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-number="2.2" class="anchored" data-anchor-id="data-cleaning"><span class="header-section-number">2.2</span> Data Cleaning</h2>
 <p>Before we start data analysis, we first load the data and the variables we are interested in. The data can be easily accessed through the <code>gssr</code> package. We select the following demograhic variables for our analysis:</p>
 <ul>
-<li><p>sex</p></li>
-<li><p>age</p></li>
-<li><p>race</p></li>
-<li><p>degree: highest degree achieved</p></li>
-<li><p>marital: marital status</p></li>
-<li><p>childs: total number of children</p></li>
-<li><p>relig16: religion raised in</p></li>
-<li><p>relig: current religious preference</p></li>
-<li><p>partyid: political party affiliation</p></li>
-<li><p>polviews: political/social views (think of self as liberal or conservative)</p></li>
-<li><p>reg16: Region of residence at age 16</p></li>
-<li><p>reg: region of interview</p></li>
+<li><p><code>sex</code></p></li>
+<li><p><code>age</code></p></li>
+<li><p><code>race</code></p></li>
+<li><p><code>relig</code>: current religious preference</p></li>
+<li><p><code>polviews</code>: political/social views (think of self as liberal or conservative)</p></li>
+<li><p><code>reg16</code>: region of residence at age 16</p></li>
+<li><p><code>reg</code>: region of interview</p></li>
+<li><p><code>wrkstat</code>: current employment status</p></li>
 </ul>
 <p>We select specific abortion, affirmative action, and capital punishment variables. With regards to abortion, we choose seven abortion variables each representing a different reason a woman could be seeking an abortion and respondents’ opinion (Yes, No, NA) on whether a woman should be able to obtain a legal abortion for such a reason.</p>
-<p>For affirmative action, we look at …………..</p>
-<p>For capital punishment, we look at …………</p>
-<p>We clean and transform the data by mutating categorical variables into factors with meaningful labels. We also remove the rows with NA values in the abortion-related columns. This is because we discovered through data exploration that the NA values pertaining to these variables represent inapplicable responses. Therefore, we remove these rows to ensure that we only use relevant and complete data for further analysis. <em>Anything similar for aff action and cappun</em></p>
+<p>For affirmative action, we look at two opinion survey variables, <code>discaff</code> (which asks whether the respondent believes that white people are harmed by affirmative action), and <code>affrmact</code> (which asks about the respondents general support for affirmative action in the workplace).</p>
+<p>For capital punishment, we look at <code>cappun</code>, which asks the respondents opinion on whether the death penalty should be a punishment for a murder conviction.</p>
+<p>We clean and transform the data by mutating categorical variables into factors with meaningful labels. We also remove the rows with NA values in the abortion-related columns. This is because we discovered through data exploration that the NA values pertaining to these variables represent inapplicable responses. Therefore, we remove these rows to ensure that we only use relevant and complete data for further analysis. Similarly, inapplicable responses for capital punishment and affirmative action questions were discarded, as well as NA values for the demographic indicators we are investigating.</p>
 </section>
 <section id="missing-value-analysis" class="level2" data-number="2.3">
 <h2 data-number="2.3" class="anchored" data-anchor-id="missing-value-analysis"><span class="header-section-number">2.3</span> Missing value analysis</h2>
 <section id="overall" class="level3" data-number="2.3.1">
 <h3 data-number="2.3.1" class="anchored" data-anchor-id="overall"><span class="header-section-number">2.3.1</span> Overall</h3>
 <div class="cell">
-<details class="code-fold">
+<details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gssr)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gssrdoc)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(naniar)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(gss_all)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>gss_all <span class="sc">|&gt;</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(abany, discaff, cappun, region, age, childs, sex, relig) <span class="sc">|&gt;</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">vis_miss</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(gss_all)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>gss_all <span class="sc">|&gt;</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(abany, discaff, cappun, region, age, childs, sex, relig) <span class="sc">|&gt;</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">vis_miss</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="data_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
+<p><img src="data_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Above, we can see a quick visualization of the primary variables - both dependent and independent - and which ones are missing. Not all questions were asked in all years of the survey. The main pattern here is that our response variables (abany = “Whether it should be possible for a pregnant woman to obtain a legal abortion if the woman wants it for any reason”; discaff = “What do you think the chances are these days that a white person won’t get a job or promotion while an equally or less qualified black person gets one instead?”; cappun = “Do you favor or oppose the death penalty for persons convicted of murder?”) are much more likely to be missing. This is because not every question was asked every year of the survey, and respondents are more likely to refuse to answer controversial questions than demographic data such as region, age, etc.</p>
 </section>
-<section id="capital-punishment-cappun-missing-row-analysis" class="level3" data-number="2.3.2">
-<h3 data-number="2.3.2" class="anchored" data-anchor-id="capital-punishment-cappun-missing-row-analysis"><span class="header-section-number">2.3.2</span> Capital Punishment (cappun) missing row analysis</h3>
+<section id="abortion-missing-variables" class="level3" data-number="2.3.2">
+<h3 data-number="2.3.2" class="anchored" data-anchor-id="abortion-missing-variables"><span class="header-section-number">2.3.2</span> Abortion: Missing Variables</h3>
+<p>In our analysis of public opinion on abortion using the GSS data, we initially noticed a significant increase in the proportion of missing (NA) responses on abortion-related variables in some years, which led to suspicious decreases in the percentage of respondents in favor of abortion. Upon further investigation, we found that the missing responses were predominantly categorized as “NA(i)” (inapplicable), with only a small percentage of “NA(d)” (don’t know) responses, which would be expected in a survey of this nature. This observation regarding how missing data was encoded raised concerns, as it suggested that all forms of missing data, whether due to uncertainty or irrelevance, were grouped into a single “inapplicable” category. This approach rendered the NA category essentially meaningless for our analysis, as it no longer provided any insight into uncertainty or indecision. Since the inapplicable responses could not provide meaningful insights into people’s views on abortion, we decided to remove them from our analysis. This decision was crucial, as including these NAs distorted the true proportions of “yes” and “no” responses, leading to potentially misleading conclusions about trends in abortion attitudes over time.</p>
+<p>Below is a graph showing the percentage of missing values in each of the abortion-related variables we investigate in our analysis. Note that all the variables have a high percentage of missing values around 45% for “abortion for any reason” and around 35% for all other variables. Additionally, note that most of the missing values are inapplicable responses with over 90% of all missing values being inapplicable responses.</p>
 <div class="cell">
-<details class="code-fold">
+<details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>gss_ab <span class="ot">=</span> gss_all <span class="sc">|&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">c</span>(year, abdefect, abnomore, abhlth, abpoor, abrape, absingle, abany, sex, age, race, degree, relig, relig16, marital, partyid, polviews, childs, region, reg16))</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>cp <span class="ot">&lt;-</span> gss_all <span class="sc">|&gt;</span> <span class="fu">filter</span>(cappun<span class="sc">==</span><span class="dv">1</span> <span class="sc">|</span> cappun<span class="sc">==</span><span class="dv">2</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>abdefect <span class="ot">=</span> <span class="fu">data.frame</span>(base<span class="sc">::</span><span class="fu">table</span>(haven<span class="sc">::</span><span class="fu">as_factor</span>(gss_ab<span class="sc">$</span>abdefect, <span class="at">levels =</span> <span class="st">"labels"</span>))) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">nrow =</span> <span class="fu">sum</span>(Freq)) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">Perc =</span> <span class="fu">round</span>(Freq<span class="sc">*</span><span class="dv">100</span><span class="sc">/</span>nrow,<span class="dv">2</span>), <span class="at">abdefect =</span> Var1) <span class="sc">|&gt;</span> <span class="fu">select</span>(abdefect, Freq, nrow, Perc)<span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="sc">!</span>(abdefect <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"yes"</span>,<span class="st">"no"</span>) <span class="sc">|</span> Freq <span class="sc">==</span><span class="dv">0</span>)) <span class="sc">|&gt;</span> <span class="fu">select</span>(abdefect, Perc) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">response =</span> abdefect, <span class="at">reason =</span> <span class="fu">rep</span>(<span class="st">"abdefect"</span>, <span class="dv">4</span>)) <span class="sc">|&gt;</span> <span class="fu">select</span>(reason,response, Perc)</span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>cp_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">column =</span> <span class="fu">names</span>(<span class="fu">colSums</span>(<span class="fu">is.na</span>(cp))),</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">missing_count =</span> <span class="fu">sort</span>(<span class="fu">colSums</span>(<span class="fu">is.na</span>(cp))),</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">total_responses =</span> <span class="fu">nrow</span>(cp)</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co"># variables of interest</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>cp_df_2 <span class="ot">&lt;-</span> cp_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(column <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">'age'</span>, <span class="st">'race'</span>, <span class="st">'sex'</span>, <span class="st">'region'</span>, <span class="st">'relig'</span>, <span class="st">'degree'</span>))</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>abrape <span class="ot">=</span> <span class="fu">data.frame</span>(base<span class="sc">::</span><span class="fu">table</span>(haven<span class="sc">::</span><span class="fu">as_factor</span>(gss_ab<span class="sc">$</span>abrape, <span class="at">levels =</span> <span class="st">"labels"</span>))) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">nrow =</span> <span class="fu">sum</span>(Freq)) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">Perc =</span> <span class="fu">round</span>(Freq<span class="sc">*</span><span class="dv">100</span><span class="sc">/</span>nrow,<span class="dv">2</span>), <span class="at">abrape =</span> Var1) <span class="sc">|&gt;</span> <span class="fu">select</span>(abrape, Freq, nrow, Perc)<span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="sc">!</span>(abrape <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"yes"</span>,<span class="st">"no"</span>) <span class="sc">|</span> Freq <span class="sc">==</span><span class="dv">0</span>)) <span class="sc">|&gt;</span> <span class="fu">select</span>(abrape, Perc) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">response =</span> abrape, <span class="at">reason =</span> <span class="fu">rep</span>(<span class="st">"abrape"</span>, <span class="dv">4</span>)) <span class="sc">|&gt;</span> <span class="fu">select</span>(reason,response, Perc)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>abhlth <span class="ot">=</span> <span class="fu">data.frame</span>(base<span class="sc">::</span><span class="fu">table</span>(haven<span class="sc">::</span><span class="fu">as_factor</span>(gss_ab<span class="sc">$</span>abhlth, <span class="at">levels =</span> <span class="st">"labels"</span>))) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">nrow =</span> <span class="fu">sum</span>(Freq)) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">Perc =</span> <span class="fu">round</span>(Freq<span class="sc">*</span><span class="dv">100</span><span class="sc">/</span>nrow,<span class="dv">2</span>), <span class="at">abhlth =</span> Var1) <span class="sc">|&gt;</span> <span class="fu">select</span>(abhlth, Freq, nrow, Perc)<span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="sc">!</span>(abhlth <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"yes"</span>,<span class="st">"no"</span>) <span class="sc">|</span> Freq <span class="sc">==</span><span class="dv">0</span>)) <span class="sc">|&gt;</span> <span class="fu">select</span>(abhlth, Perc) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">response =</span> abhlth, <span class="at">reason =</span> <span class="fu">rep</span>(<span class="st">"abhlth"</span>, <span class="dv">4</span>)) <span class="sc">|&gt;</span> <span class="fu">select</span>(reason,response, Perc)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>abpoor <span class="ot">=</span> <span class="fu">data.frame</span>(base<span class="sc">::</span><span class="fu">table</span>(haven<span class="sc">::</span><span class="fu">as_factor</span>(gss_ab<span class="sc">$</span>abpoor, <span class="at">levels =</span> <span class="st">"labels"</span>))) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">nrow =</span> <span class="fu">sum</span>(Freq)) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">Perc =</span> <span class="fu">round</span>(Freq<span class="sc">*</span><span class="dv">100</span><span class="sc">/</span>nrow,<span class="dv">2</span>), <span class="at">abpoor =</span> Var1) <span class="sc">|&gt;</span> <span class="fu">select</span>(abpoor, Freq, nrow, Perc)<span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="sc">!</span>(abpoor <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"yes"</span>,<span class="st">"no"</span>) <span class="sc">|</span> Freq <span class="sc">==</span><span class="dv">0</span>)) <span class="sc">|&gt;</span> <span class="fu">select</span>(abpoor, Perc) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">response =</span> abpoor, <span class="at">reason =</span> <span class="fu">rep</span>(<span class="st">"abpoor"</span>, <span class="dv">4</span>)) <span class="sc">|&gt;</span> <span class="fu">select</span>(reason,response, Perc)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>abnomore <span class="ot">=</span> <span class="fu">data.frame</span>(base<span class="sc">::</span><span class="fu">table</span>(haven<span class="sc">::</span><span class="fu">as_factor</span>(gss_ab<span class="sc">$</span>abnomore, <span class="at">levels =</span> <span class="st">"labels"</span>))) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">nrow =</span> <span class="fu">sum</span>(Freq)) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">Perc =</span> <span class="fu">round</span>(Freq<span class="sc">*</span><span class="dv">100</span><span class="sc">/</span>nrow,<span class="dv">2</span>), <span class="at">abnomore =</span> Var1) <span class="sc">|&gt;</span> <span class="fu">select</span>(abnomore, Freq, nrow, Perc)<span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="sc">!</span>(abnomore <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"yes"</span>,<span class="st">"no"</span>) <span class="sc">|</span> Freq <span class="sc">==</span><span class="dv">0</span>)) <span class="sc">|&gt;</span> <span class="fu">select</span>(abnomore, Perc) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">response =</span> abnomore, <span class="at">reason =</span> <span class="fu">rep</span>(<span class="st">"abnomore"</span>, <span class="dv">4</span>)) <span class="sc">|&gt;</span> <span class="fu">select</span>(reason,response, Perc)</span>
 <span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co"># percentage of missing data</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>cp_df<span class="sc">$</span>missing_percentage <span class="ot">&lt;-</span> (cp_df<span class="sc">$</span>missing_count <span class="sc">/</span> cp_df<span class="sc">$</span>total_responses) <span class="sc">*</span> <span class="dv">100</span></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>cp_df_2<span class="sc">$</span>missing_percentage <span class="ot">&lt;-</span> (cp_df_2<span class="sc">$</span>missing_count <span class="sc">/</span> cp_df_2<span class="sc">$</span>total_responses) <span class="sc">*</span> <span class="dv">100</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>absingle <span class="ot">=</span> <span class="fu">data.frame</span>(base<span class="sc">::</span><span class="fu">table</span>(haven<span class="sc">::</span><span class="fu">as_factor</span>(gss_ab<span class="sc">$</span>absingle, <span class="at">levels =</span> <span class="st">"labels"</span>))) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">nrow =</span> <span class="fu">sum</span>(Freq)) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">Perc =</span> <span class="fu">round</span>(Freq<span class="sc">*</span><span class="dv">100</span><span class="sc">/</span>nrow,<span class="dv">2</span>), <span class="at">absingle =</span> Var1) <span class="sc">|&gt;</span> <span class="fu">select</span>(absingle, Freq, nrow, Perc)<span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="sc">!</span>(absingle <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"yes"</span>,<span class="st">"no"</span>) <span class="sc">|</span> Freq <span class="sc">==</span><span class="dv">0</span>)) <span class="sc">|&gt;</span> <span class="fu">select</span>(absingle, Perc) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">response =</span> absingle, <span class="at">reason =</span> <span class="fu">rep</span>(<span class="st">"absingle"</span>, <span class="dv">4</span>)) <span class="sc">|&gt;</span> <span class="fu">select</span>(reason,response, Perc)</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>abany <span class="ot">=</span> <span class="fu">data.frame</span>(base<span class="sc">::</span><span class="fu">table</span>(haven<span class="sc">::</span><span class="fu">as_factor</span>(gss_ab<span class="sc">$</span>abany, <span class="at">levels =</span> <span class="st">"labels"</span>))) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">nrow =</span> <span class="fu">sum</span>(Freq)) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">Perc =</span> <span class="fu">round</span>(Freq<span class="sc">*</span><span class="dv">100</span><span class="sc">/</span>nrow,<span class="dv">2</span>), <span class="at">abany =</span> Var1) <span class="sc">|&gt;</span> <span class="fu">select</span>(abany, Freq, nrow, Perc)<span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="sc">!</span>(abany <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"yes"</span>,<span class="st">"no"</span>) <span class="sc">|</span> Freq <span class="sc">==</span><span class="dv">0</span>)) <span class="sc">|&gt;</span> <span class="fu">select</span>(abany, Perc) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">response =</span> abany, <span class="at">reason =</span> <span class="fu">rep</span>(<span class="st">"abany"</span>, <span class="dv">4</span>)) <span class="sc">|&gt;</span> <span class="fu">select</span>(reason,response, Perc)</span>
 <span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>cp_df_sorted <span class="ot">&lt;-</span> cp_df <span class="sc">|&gt;</span> <span class="fu">arrange</span>(missing_percentage)</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>NA_percentage <span class="ot">=</span> <span class="fu">rbind</span>(abhlth, abrape, abdefect, abpoor, abnomore, absingle, abany)</span>
 <span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>cp_df_2_sorted <span class="ot">&lt;-</span> cp_df_2 <span class="sc">|&gt;</span> </span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(missing_percentage) <span class="sc">|&gt;</span> </span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">column =</span> <span class="fu">factor</span>(column, <span class="at">levels =</span> column))</span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>top_50_present <span class="ot">&lt;-</span> cp_df_sorted <span class="sc">|&gt;</span> </span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">50</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">column =</span> <span class="fu">factor</span>(column, <span class="at">levels =</span> column))</span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(top_50_present, <span class="fu">aes</span>(<span class="at">x =</span> column, <span class="at">y =</span> missing_percentage)) <span class="sc">+</span></span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">fill =</span> <span class="st">"darkgrey"</span>) <span class="sc">+</span></span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">'Top 50 Most Present Columns'</span>,</span>
-<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Columns"</span>,</span>
-<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Percentage of Missing Rows (%)"</span></span>
-<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(</span>
-<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">sprintf</span>(<span class="st">"%.2f%%"</span>, missing_percentage)), </span>
-<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="at">width =</span> <span class="fl">0.9</span>),</span>
-<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.1</span>,</span>
-<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="fl">2.5</span></span>
-<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>NA_percentage_b <span class="ot">=</span> NA_percentage <span class="sc">|&gt;</span> </span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">response =</span> <span class="fu">factor</span>(response, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"iap"</span>, <span class="st">"don't know"</span>, <span class="st">"no answer"</span>, <span class="st">"skipped on web"</span>))) <span class="sc">|&gt;</span> </span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">reason =</span> <span class="fu">case_when</span>(reason <span class="sc">==</span> <span class="st">"abhlth"</span> <span class="sc">~</span> <span class="st">"mother's health"</span>,</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>                                                 reason <span class="sc">==</span> <span class="st">"abrape"</span> <span class="sc">~</span> <span class="st">"rape"</span>,</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>                                                 reason <span class="sc">==</span> <span class="st">"abdefect"</span> <span class="sc">~</span> <span class="st">"birth defect"</span>,</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>                                                 reason <span class="sc">==</span> <span class="st">"abpoor"</span> <span class="sc">~</span> <span class="st">"financial hardship"</span>,</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>                                                 reason <span class="sc">==</span> <span class="st">"abnomore"</span> <span class="sc">~</span> <span class="st">"married-no more children"</span>,</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>                                                 reason <span class="sc">==</span> <span class="st">"absingle"</span> <span class="sc">~</span> <span class="st">"not married"</span>,</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>                                                 reason <span class="sc">==</span> <span class="st">"abany"</span> <span class="sc">~</span> <span class="st">"any reason"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">response =</span> <span class="fu">recode</span>(response, <span class="at">iap =</span> <span class="st">"inapplicable"</span>))</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>inv <span class="ot">=</span> NA_percentage_b <span class="sc">|&gt;</span> <span class="fu">group_by</span>(reason) <span class="sc">|&gt;</span> <span class="fu">summarize</span>(<span class="fu">sum</span>(Perc)) <span class="sc">|&gt;</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(<span class="st">`</span><span class="at">sum(Perc)</span><span class="st">`</span>)) <span class="sc">|&gt;</span> <span class="fu">select</span>(reason)</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>                          </span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(NA_percentage_b <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">reason =</span> <span class="fu">factor</span>(reason, <span class="at">levels =</span> inv<span class="sc">$</span>reason)), <span class="fu">aes</span>(<span class="at">x=</span>reason, <span class="at">y=</span> Perc, <span class="at">fill =</span> response)) <span class="sc">+</span></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Reason for abortion"</span>, <span class="at">y =</span> <span class="st">"Percentage of missing values (NA) in the responses"</span>, <span class="at">title =</span> <span class="st">"Percentage of Missing Values (NA) in Responses to Abortion Questions by NA Label"</span>) <span class="sc">+</span></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="data_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
+<p><img src="data_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="960"></p>
 </div>
 </div>
-<details class="code-fold">
+</section>
+<section id="capital-punishment-cappun-missing-row-analysis" class="level3" data-number="2.3.3">
+<h3 data-number="2.3.3" class="anchored" data-anchor-id="capital-punishment-cappun-missing-row-analysis"><span class="header-section-number">2.3.3</span> Capital Punishment (cappun) missing row analysis</h3>
+<div class="cell">
+<details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(cp_df_2_sorted, <span class="fu">aes</span>(<span class="at">x =</span> column, <span class="at">y =</span> missing_percentage)) <span class="sc">+</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">fill =</span> <span class="st">"darkgrey"</span>) <span class="sc">+</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">'Variables of Interest %Missing'</span>,</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Columns"</span>,</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Percentage of Missing Rows (%)"</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">sprintf</span>(<span class="st">"%.2f%%"</span>, missing_percentage)), </span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="at">width =</span> <span class="fl">0.9</span>),</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.1</span>,</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="fl">2.5</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>cp <span class="ot">&lt;-</span> gss_all <span class="sc">|&gt;</span> <span class="fu">filter</span>(cappun<span class="sc">==</span><span class="dv">1</span> <span class="sc">|</span> cappun<span class="sc">==</span><span class="dv">2</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>cp_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">column =</span> <span class="fu">names</span>(<span class="fu">colSums</span>(<span class="fu">is.na</span>(cp))),</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">missing_count =</span> <span class="fu">sort</span>(<span class="fu">colSums</span>(<span class="fu">is.na</span>(cp))),</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">total_responses =</span> <span class="fu">nrow</span>(cp)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co"># variables of interest</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>cp_df_2 <span class="ot">&lt;-</span> cp_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(column <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">'age'</span>, <span class="st">'race'</span>, <span class="st">'sex'</span>, <span class="st">'region'</span>, <span class="st">'relig'</span>, <span class="st">'degree'</span>))</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co"># percentage of missing data</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>cp_df<span class="sc">$</span>missing_percentage <span class="ot">&lt;-</span> (cp_df<span class="sc">$</span>missing_count <span class="sc">/</span> cp_df<span class="sc">$</span>total_responses) <span class="sc">*</span> <span class="dv">100</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>cp_df_2<span class="sc">$</span>missing_percentage <span class="ot">&lt;-</span> (cp_df_2<span class="sc">$</span>missing_count <span class="sc">/</span> cp_df_2<span class="sc">$</span>total_responses) <span class="sc">*</span> <span class="dv">100</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>cp_df_sorted <span class="ot">&lt;-</span> cp_df <span class="sc">|&gt;</span> <span class="fu">arrange</span>(missing_percentage)</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>cp_df_2_sorted <span class="ot">&lt;-</span> cp_df_2 <span class="sc">|&gt;</span> </span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(missing_percentage) <span class="sc">|&gt;</span> </span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">column =</span> <span class="fu">factor</span>(column, <span class="at">levels =</span> column))</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>top_50_present <span class="ot">&lt;-</span> cp_df_sorted <span class="sc">|&gt;</span> </span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">50</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">column =</span> <span class="fu">factor</span>(column, <span class="at">levels =</span> column))</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(top_50_present, <span class="fu">aes</span>(<span class="at">x =</span> column, <span class="at">y =</span> missing_percentage)) <span class="sc">+</span></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">fill =</span> <span class="st">"darkgrey"</span>) <span class="sc">+</span></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">'Top 50 Most Present Columns'</span>,</span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Columns"</span>,</span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Percentage of Missing Rows (%)"</span></span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">sprintf</span>(<span class="st">"%.2f%%"</span>, missing_percentage)), </span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="at">width =</span> <span class="fl">0.9</span>),</span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.1</span>,</span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="fl">2.5</span></span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="data_files/figure-html/unnamed-chunk-2-2.png" class="img-fluid figure-img" width="672"></p>
-</figure>
+<p><img src="data_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
 </div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(cp_df_2_sorted, <span class="fu">aes</span>(<span class="at">x =</span> column, <span class="at">y =</span> missing_percentage)) <span class="sc">+</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">fill =</span> <span class="st">"darkgrey"</span>) <span class="sc">+</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">'Variables of Interest %Missing'</span>,</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Columns"</span>,</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Percentage of Missing Rows (%)"</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">sprintf</span>(<span class="st">"%.2f%%"</span>, missing_percentage)), </span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="at">width =</span> <span class="fl">0.9</span>),</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.1</span>,</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="fl">2.5</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="data_files/figure-html/unnamed-chunk-3-2.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 
@@ -398,7 +426,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const onCopySuccess = function(e) {
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -430,50 +469,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
   });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+  function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
+      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -483,17 +483,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start',
+      placement: 'bottom-start'
     };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -505,130 +496,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
-          }
-        }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
-        }
-        return container.innerHTML
-      } else {
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(note);
-        }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
-      }
-    }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
-          }
-        } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
-          .then(res => res.text())
-          .then(html => {
-            const parser = new DOMParser();
-            const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
-            if (note !== null) {
-              const html = processXRef(id, note);
-              instance.setContent(html);
-            } 
-          }).finally(() => {
-            instance.enable();
-            instance.show();
-          });
-        }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
+      return note.innerHTML;
     });
   }
       let selectedAnnoteEl;
@@ -672,7 +540,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
-            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -698,32 +565,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -785,12 +626,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link" aria-label="Introduction">
+      <a href="./index.html" class="pagination-link">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./results.html" class="pagination-link" aria-label="Results">
+      <a href="./results.html" class="pagination-link">
         <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Results</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -803,13 +644,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/jdonohue44/GeneralSocialSurveyVisualizations/edit/main/data.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/jdonohue44/GeneralSocialSurveyVisualizations/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
-    <div class="nav-footer-right">
-<p>This book was built with <a href="https://quarto.org/">Quarto</a>.</p>
-</div>
+    </div>
+    <div class="nav-footer-right">This book was built with <a href="https://quarto.org/">Quarto</a>.</div>
   </div>
 </footer>
-
 
 
 
