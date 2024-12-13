@@ -60,15 +60,7 @@ Above, we can see a quick visualization of the primary variables - both dependen
 
 In our analysis of public opinion on abortion using the GSS data, we initially noticed a significant increase in the proportion of missing (NA) responses on abortion-related variables in some years, which led to suspicious decreases in the percentage of respondents in favor of abortion. Upon further investigation, we found that the missing responses were predominantly categorized as "NA(i)" (inapplicable), with only a small percentage of "NA(d)" (don't know) responses, which would be expected in a survey of this nature. This observation regarding how missing data was encoded raised concerns, as it suggested that all forms of missing data, whether due to uncertainty or irrelevance, were grouped into a single "inapplicable" category. This approach rendered the NA category essentially meaningless for our analysis, as it no longer provided any insight into uncertainty or indecision. Since the inapplicable responses could not provide meaningful insights into people's views on abortion, we decided to remove them from our analysis. This decision was crucial, as including these NAs distorted the true proportions of "yes" and "no" responses, leading to potentially misleading conclusions about trends in abortion attitudes over time.
 
-Below is a graph showing the percentage of missing values in each of the abortion-related variables we investigate in our analysis. Note that all the variables have a high percentage of missing values around 45% for "abrtion for any reason" and around 35% for all other variables. Additionally, note that most of the missing values are inapplicable responses with over 90% of all missing values being inapplicable responses.
-
-any reason	45.76			
-rape	35.78			
-financial hardship	35.67			
-not married	35.66			
-married-no more children	35.60			
-birth defect	35.48			
-mother's health	35.17	
+Below is a graph showing the percentage of missing values in each of the abortion-related variables we investigate in our analysis. Note that all the variables have a high percentage of missing values around 45% for "abortion for any reason" and around 35% for all other variables. Additionally, note that most of the missing values are inapplicable responses with over 90% of all missing values being inapplicable responses.
 
 
 ```{r, warning = False, message = False, fig.height = 10, fig.width = 10}
